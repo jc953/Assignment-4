@@ -1,4 +1,4 @@
-package student;
+package a4;
 
 import java.util.Arrays;
 import java.util.Collections;

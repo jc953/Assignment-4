@@ -1,4 +1,4 @@
-package student;
+package a4;
 
 /**
  * An interface representing a Boolean condition in a critter program.

@@ -1,4 +1,4 @@
-package student;
+package a4;
 
 /**
  * A NumToken is a token containing a number.

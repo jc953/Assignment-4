@@ -1,4 +1,4 @@
-package student;
+package a4;
 
 /**
  * A node in the abstract syntax tree of a program.

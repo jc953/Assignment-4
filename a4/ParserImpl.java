@@ -1,4 +1,4 @@
-package student;
+package a4;
 
 import java.io.Reader;
 

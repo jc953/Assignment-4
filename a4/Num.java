@@ -1,4 +1,4 @@
-package student;
+package a4;
 
 /** A literal numeric constant, such as 2.
  */

@@ -1,4 +1,4 @@
-package student;
+package a4;
 
 /**
  * An ErrorToken is a token containing unrecognized string in the critter language.
