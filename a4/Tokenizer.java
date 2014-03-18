@@ -7,16 +7,19 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- *  A Tokenizer turns a Reader into a stream of tokens that can be iterated over using a {@code for} loop.
+ * A Tokenizer turns a Reader into a stream of tokens that can be iterated over
+ * using a {@code for} loop.
  */
 public class Tokenizer implements Iterator<Token> {
 
 	/**
-	 * The state of a Tokenizer is {@code NOT_READY} if the next token has not been processed.
+	 * The state of a Tokenizer is {@code NOT_READY} if the next token has not
+	 * been processed.
 	 */
 	public static final int NOT_READY = 0;
 	/**
-	 * The state of a Tokenizer is {@code READY} if the next token has been processed.
+	 * The state of a Tokenizer is {@code READY} if the next token has been
+	 * processed.
 	 */
 	public static final int READY = 1;
 
@@ -28,6 +31,7 @@ public class Tokenizer implements Iterator<Token> {
 
 	/**
 	 * Create a tokenizer for a program to be read by the specified reader.
+	 * 
 	 * @param r
 	 */
 	public Tokenizer(Reader r) {
@@ -41,8 +45,7 @@ public class Tokenizer implements Iterator<Token> {
 		if (state == NOT_READY) {
 			try {
 				lexOneToken();
-			}
-			catch (NoSuchElementException e) {
+			} catch (NoSuchElementException e) {
 				return false;
 			}
 		}
@@ -58,6 +61,7 @@ public class Tokenizer implements Iterator<Token> {
 
 	/**
 	 * Return the next token in the program without consuming the token.
+	 * 
 	 * @return
 	 */
 	public Token peek() {
@@ -70,15 +74,14 @@ public class Tokenizer implements Iterator<Token> {
 	public void remove() {
 		throw new UnsupportedOperationException();
 	}
-	
+
 	/**
 	 * Close the reader opened by this tokenizer.
 	 */
 	public void close() {
 		try {
 			br.close();
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			System.out.println("IOException:");
 			System.out.println(e.getMessage());
 			e.printStackTrace();
@@ -86,10 +89,11 @@ public class Tokenizer implements Iterator<Token> {
 	}
 
 	/**
-	 * Read one token from the reader.
-	 * One token is always produced if the end of file is not encountered,
-	 * but that token may be an error token.
-	 * @throws NoSuchElementException if EOF is encountered and a token cannot be produced.
+	 * Read one token from the reader. One token is always produced if the end
+	 * of file is not encountered, but that token may be an error token.
+	 * 
+	 * @throws NoSuchElementException
+	 *             if EOF is encountered and a token cannot be produced.
 	 */
 	protected void lexOneToken() {
 		char c;
@@ -98,7 +102,7 @@ public class Tokenizer implements Iterator<Token> {
 		else
 			c = nextChar();
 
-		//consume whitespaces
+		// consume whitespaces
 		while (c == ' ' || c == '\t' || c == '\n' || c == '\r') {
 			if (c == '\n')
 				lineNo++;
@@ -124,14 +128,12 @@ public class Tokenizer implements Iterator<Token> {
 		else if (c == ':') {
 			if (consume('='))
 				setNextToken(Token.ASSIGN);
-		}
-		else if (c == '=')
+		} else if (c == '=')
 			setNextToken(Token.EQ);
 		else if (c == '!') {
 			if (consume('='))
 				setNextToken(Token.NE);
-		}
-		else if (c == '<')
+		} else if (c == '<')
 			lexLAngle();
 		else if (c == '>')
 			lexRAngle();
@@ -156,7 +158,7 @@ public class Tokenizer implements Iterator<Token> {
 		if (c == -1)
 			setNextToken(Token.LT);
 		else {
-			char cc = (char)c;
+			char cc = (char) c;
 			buf.append(cc);
 			if (cc == '=')
 				setNextToken(Token.LE);
@@ -170,7 +172,7 @@ public class Tokenizer implements Iterator<Token> {
 		if (c == -1)
 			setNextToken(Token.GT);
 		else {
-			char cc = (char)c;
+			char cc = (char) c;
 			buf.append(cc);
 			if (cc == '=')
 				setNextToken(Token.GE);
@@ -184,23 +186,20 @@ public class Tokenizer implements Iterator<Token> {
 		if (c == -1)
 			setNextToken(Token.MINUS);
 		else {
-			char cc = (char)c;
+			char cc = (char) c;
 			buf.append(cc);
 			if (cc == '-') {
 				if (consume('>'))
 					setNextToken(Token.ARR);
-			}
-			else
+			} else
 				setNextToken(Token.MINUS, cc);
 		}
 	}
 
 	protected void lexIdentifier() {
 		int c;
-		for (c = nextChar(false);
-				c != -1 && Character.isJavaIdentifierPart(c);
-				c = nextChar(false))
-			buf.append((char)c);
+		for (c = nextChar(false); c != -1 && Character.isJavaIdentifierPart(c); c = nextChar(false))
+			buf.append((char) c);
 
 		String id = buf.toString();
 		if (id.equals("mem"))
@@ -245,15 +244,13 @@ public class Tokenizer implements Iterator<Token> {
 			unexpected();
 
 		if (c != -1)
-			buf.append((char)c);
+			buf.append((char) c);
 	}
 
 	protected void lexNum() {
 		int c;
-		for (c = nextChar(false);
-				c != -1 && Character.isJavaIdentifierPart(c);
-				c = nextChar(false))
-			buf.append((char)c);
+		for (c = nextChar(false); c != -1 && Character.isJavaIdentifierPart(c); c = nextChar(false))
+			buf.append((char) c);
 
 		try {
 			String num = buf.toString();
@@ -262,32 +259,34 @@ public class Tokenizer implements Iterator<Token> {
 			state = READY;
 			buf = new StringBuffer();
 			if (c != -1)
-				buf.append((char)c);
-		}
-		catch (NumberFormatException e) {
+				buf.append((char) c);
+		} catch (NumberFormatException e) {
 			unexpected();
 		}
 	}
 
 	/**
-	 * Read the next character from the reader, treating EOF as an error.
-	 * If successful, append the character to the buffer.
+	 * Read the next character from the reader, treating EOF as an error. If
+	 * successful, append the character to the buffer.
+	 * 
 	 * @return The next character
-	 * @throws NoSuchElementException if EOF is encountered
+	 * @throws NoSuchElementException
+	 *             if EOF is encountered
 	 */
 	protected char nextChar() {
-		char c = (char)nextChar(true);
+		char c = (char) nextChar(true);
 		buf.append(c);
 		return c;
 	}
 
 	/**
-	 * Read the next character from the reader.
-	 * If isEOFerror, treat EOF as an error.
-	 * If successful, append the character to the buffer.
+	 * Read the next character from the reader. If isEOFerror, treat EOF as an
+	 * error. If successful, append the character to the buffer.
+	 * 
 	 * @param isEOFerror
 	 * @return The integer representation of the next character
-	 * @throws NoSuchElementException if EOF is encountered and isEOFerror is true
+	 * @throws NoSuchElementException
+	 *             if EOF is encountered and isEOFerror is true
 	 */
 	protected int nextChar(boolean isEOFerror) {
 		try {
@@ -295,8 +294,7 @@ public class Tokenizer implements Iterator<Token> {
 			if (isEOFerror && c == -1)
 				throw new NoSuchElementException();
 			return c;
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			System.out.println("IOException:");
 			System.out.println(e.getMessage());
 			e.printStackTrace();
@@ -321,9 +319,11 @@ public class Tokenizer implements Iterator<Token> {
 	}
 
 	/**
-	 * Read the next character and determine whether it is the expected character.
-	 * If not, the current buffer is an error token.
-	 * @param expected The expected next character
+	 * Read the next character and determine whether it is the expected
+	 * character. If not, the current buffer is an error token.
+	 * 
+	 * @param expected
+	 *            The expected next character
 	 * @return true if the next character is as expected
 	 */
 	protected boolean consume(char expected) {
@@ -343,7 +343,7 @@ public class Tokenizer implements Iterator<Token> {
 		state = READY;
 		buf = new StringBuffer();
 	}
-	
+
 	protected int getLineNo() {
 		return lineNo;
 	}

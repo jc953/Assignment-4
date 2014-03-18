@@ -5,14 +5,14 @@ package a4;
  */
 public class Rule implements Node {
 
-    private Condition condition;
-    private Command command;
+	private Condition condition;
+	private Command command;
 
-    public Rule(Condition condition, Command command){
-    	this.condition = condition;
-    	this.command = command;
-    }
-    
+	public Rule(Condition condition, Command command) {
+		this.condition = condition;
+		this.command = command;
+	}
+
 	@Override
 	public int size() {
 		// TODO Auto-generated method stub

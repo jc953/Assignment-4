@@ -7,6 +7,7 @@ public class ParserFactory {
 
 	/**
 	 * Return a parser object for parsing a critter program.
+	 * 
 	 * @return
 	 */
 	public static Parser getParser() {

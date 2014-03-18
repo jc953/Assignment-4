@@ -3,10 +3,10 @@ package a4;
 import java.util.InputMismatchException;
 
 /**
- *  A Token represents a legal token (symbol) in the critter language
+ * A Token represents a legal token (symbol) in the critter language
  */
 public class Token {
-	//Token types
+	// Token types
 	public static final int MEM = 0;
 	public static final int WAIT = 10;
 	public static final int FORWARD = 11;
@@ -53,8 +53,11 @@ public class Token {
 
 	/**
 	 * Create a token with the specified type.
-	 * @param type The ID of the desired token type
-	 * @param lineNo The line number in the input file containing this token.
+	 * 
+	 * @param type
+	 *            The ID of the desired token type
+	 * @param lineNo
+	 *            The line number in the input file containing this token.
 	 */
 	public Token(int type, int lineNo) {
 		this.type = type;
@@ -68,7 +71,7 @@ public class Token {
 	public int getType() {
 		return type;
 	}
-	
+
 	/**
 	 * 
 	 * @return The line number in the input file of this token.
@@ -79,33 +82,37 @@ public class Token {
 
 	/**
 	 * Determine whether this token is of number type.
+	 * 
 	 * @return true if this token is of number type
 	 */
 	public boolean isNum() {
 		return type == NUM;
 	}
-	
+
 	/**
 	 * 
 	 * @return The number token associated with this token.
-	 * @throws InputMismatchException if this token is not of number type
+	 * @throws InputMismatchException
+	 *             if this token is not of number type
 	 */
 	public NumToken toNumToken() {
 		if (isNum())
-			return (NumToken)this;
-		 throw new InputMismatchException("Token is not a number.");
+			return (NumToken) this;
+		throw new InputMismatchException("Token is not a number.");
 	}
 
 	/**
 	 * Determine whether this token is of action type.
+	 * 
 	 * @return true if this token is of action type
 	 */
 	public boolean isAction() {
-		return 10 <= type && type <=20;
+		return 10 <= type && type <= 20;
 	}
-	
+
 	/**
 	 * Determine whether this token is of addop type.
+	 * 
 	 * @return true if this token is of addop type
 	 */
 	public boolean isAddOp() {
@@ -114,6 +121,7 @@ public class Token {
 
 	/**
 	 * Determine whether this token is of mulop type.
+	 * 
 	 * @return true if this token is of mulop type
 	 */
 	public boolean isMulOp() {
@@ -122,14 +130,16 @@ public class Token {
 
 	/**
 	 * Determine whether this token is of sensor type.
+	 * 
 	 * @return true if this token is of sensor type
 	 */
 	public boolean isSensor() {
-		return 80 <= type && type <=82;
+		return 80 <= type && type <= 82;
 	}
-	
+
 	/**
 	 * Determine whether this token is of rel type.
+	 * 
 	 * @return true if this token is of rel type
 	 */
 	public boolean isRel() {
@@ -143,51 +153,94 @@ public class Token {
 
 	/**
 	 * Return the string representation of the given token type.
-	 * @param type The ID of the token type
+	 * 
+	 * @param type
+	 *            The ID of the token type
 	 * @return
 	 */
 	public static String toString(int type) {
 		switch (type) {
-		case MEM: return "mem";
-		case WAIT: return "wait";
-		case FORWARD: return "forward";
-		case BACKWARD: return "backward";
-		case LEFT: return "left";
-		case RIGHT: return "right";
-		case EAT: return "eat";
-		case ATTACK: return "attack";
-		case SERVE: return "serve";
-		case TAG: return "tag";
-		case GROW: return "grow";
-		case BUD: return "bud";
-		case MATE: return "mate";
-		case OR: return "or";
-		case AND: return "and";
-		case LT: return "<";
-		case LE: return "<=";
-		case EQ: return "=";
-		case GE: return ">=";
-		case GT: return ">";
-		case NE: return "!=";
-		case PLUS: return "+";
-		case MINUS: return "-";
-		case MUL: return "*";
-		case DIV: return "/";
-		case MOD: return "mod";
-		case ASSIGN: return ":=";
-		case NEARBY: return "nearby";
-		case AHEAD: return "ahead";
-		case RANDOM: return "random";
-		case LBRACKET: return "[";
-		case RBRACKET: return "]";
-		case LPAREN: return "(";
-		case RPAREN: return ")";
-		case LBRACE: return "{";
-		case RBRACE: return "}";
-		case ARR: return "-->";
-		case SEMICOLON: return ";";
-		case NUM: return "<number>";
-		default: throw new InputMismatchException("Token ID does not match any of the defined tokens.");
+		case MEM:
+			return "mem";
+		case WAIT:
+			return "wait";
+		case FORWARD:
+			return "forward";
+		case BACKWARD:
+			return "backward";
+		case LEFT:
+			return "left";
+		case RIGHT:
+			return "right";
+		case EAT:
+			return "eat";
+		case ATTACK:
+			return "attack";
+		case SERVE:
+			return "serve";
+		case TAG:
+			return "tag";
+		case GROW:
+			return "grow";
+		case BUD:
+			return "bud";
+		case MATE:
+			return "mate";
+		case OR:
+			return "or";
+		case AND:
+			return "and";
+		case LT:
+			return "<";
+		case LE:
+			return "<=";
+		case EQ:
+			return "=";
+		case GE:
+			return ">=";
+		case GT:
+			return ">";
+		case NE:
+			return "!=";
+		case PLUS:
+			return "+";
+		case MINUS:
+			return "-";
+		case MUL:
+			return "*";
+		case DIV:
+			return "/";
+		case MOD:
+			return "mod";
+		case ASSIGN:
+			return ":=";
+		case NEARBY:
+			return "nearby";
+		case AHEAD:
+			return "ahead";
+		case RANDOM:
+			return "random";
+		case LBRACKET:
+			return "[";
+		case RBRACKET:
+			return "]";
+		case LPAREN:
+			return "(";
+		case RPAREN:
+			return ")";
+		case LBRACE:
+			return "{";
+		case RBRACE:
+			return "}";
+		case ARR:
+			return "-->";
+		case SEMICOLON:
+			return ";";
+		case NUM:
+			return "<number>";
+		default:
+			throw new InputMismatchException(
+					"Token ID does not match any of the defined tokens.");
 		}
 	}
 }

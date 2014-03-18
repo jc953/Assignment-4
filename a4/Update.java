@@ -1,15 +1,14 @@
 package a4;
 
-public class Update implements Node{
+public class Update implements Node {
 	ExtendedExpression ee;
 	Expression e;
-	
-	public Update(ExtendedExpression ee, Expression e){
+
+	public Update(ExtendedExpression ee, Expression e) {
 		this.ee = ee;
 		this.e = e;
 	}
-	
-	
+
 	@Override
 	public int size() {
 		// TODO Auto-generated method stub
@@ -25,7 +24,7 @@ public class Update implements Node{
 	@Override
 	public void prettyPrint(StringBuffer sb) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 }

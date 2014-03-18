@@ -2,7 +2,7 @@ package a4;
 
 /**
  * A representation of a binary Boolean condition: 'and' or 'or'
- *
+ * 
  */
 public class BinaryCondition implements Condition {
 	Condition left, right;
@@ -10,6 +10,7 @@ public class BinaryCondition implements Condition {
 
 	/**
 	 * Create an AST representation of l op r.
+	 * 
 	 * @param l
 	 * @param op
 	 * @param r
@@ -35,7 +36,7 @@ public class BinaryCondition implements Condition {
 	@Override
 	public void prettyPrint(StringBuffer sb) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

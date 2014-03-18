@@ -2,8 +2,9 @@ package a4;
 
 /**
  * A NumToken is a token containing a number.
+ * 
  * @author Chinawat
- *
+ * 
  */
 public class NumToken extends Token {
 

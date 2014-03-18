@@ -1,9 +1,11 @@
 package a4;
 
 /**
- * An ErrorToken is a token containing unrecognized string in the critter language.
+ * An ErrorToken is a token containing unrecognized string in the critter
+ * language.
+ * 
  * @author Chinawat
- *
+ * 
  */
 public class ErrorToken extends Token {
 

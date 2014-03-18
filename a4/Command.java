@@ -2,23 +2,23 @@ package a4;
 
 import java.util.ArrayList;
 
-public class Command implements Node{
+public class Command implements Node {
 	ArrayList<Update> updates;
 	Expression action;
-	
-	public Command (){
+
+	public Command() {
 		updates = new ArrayList<Update>();
 		action = null;
 	}
 
-	public void addUpdate(Update u){
+	public void addUpdate(Update u) {
 		updates.add(u);
 	}
-	
-	public void addAction(Expression e){
+
+	public void addAction(Expression e) {
 		action = e;
 	}
-	
+
 	@Override
 	public int size() {
 		// TODO Auto-generated method stub
@@ -34,6 +34,6 @@ public class Command implements Node{
 	@Override
 	public void prettyPrint(StringBuffer sb) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

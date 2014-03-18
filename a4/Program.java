@@ -4,24 +4,23 @@ import java.util.ArrayList;
 
 /**
  * A representation of a critter program.
- *
+ * 
  */
 public class Program implements Node {
 
 	private ArrayList<Rule> rules;
-	
-	public Program(){
+
+	public Program() {
 		rules = new ArrayList<Rule>();
 	}
-	
-	protected void addRule(Rule rule){
+
+	protected void addRule(Rule rule) {
 		rules.add(rule);
 	}
-	
+
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return rules.size() + 1;
 	}
 
 	@Override
@@ -32,7 +31,6 @@ public class Program implements Node {
 
 	@Override
 	public void prettyPrint(StringBuffer sb) {
-		// TODO Auto-generated method stub
 
 	}
 
