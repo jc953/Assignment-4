@@ -3,9 +3,11 @@ package a4;
 // A critter program expression that has an integer value.
 public class Expression implements Node {
 	Token tok;
+	boolean paren;
 
 	public Expression(Token tok) {
 		this.tok = tok;
+		paren = false;
 	}
 
 	@Override
@@ -22,8 +24,18 @@ public class Expression implements Node {
 
 	@Override
 	public void prettyPrint(StringBuffer sb) {
-		if (tok != null) System.out.print(" " + tok.toString());
+		if (paren){
+			System.out.print(" ( " + tok.toString() + " )");
+		}
+		else{
+			System.out.print(tok.toString());
+		}
 
 	}
+	
+	public void setParen(boolean b){
+		paren = b;
+	}
+		
 
 }

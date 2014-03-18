@@ -4,9 +4,8 @@ package a4;
  * A representation of a binary Boolean condition: 'and' or 'or'
  * 
  */
-public class BinaryCondition implements Condition {
+public class BinaryCondition extends Condition {
 	Condition left, right;
-	Token tok;
 
 	/**
 	 * Create an AST representation of l op r.
@@ -35,9 +34,15 @@ public class BinaryCondition implements Condition {
 
 	@Override
 	public void prettyPrint(StringBuffer sb) {
+		if(brace){
+			System.out.print(" {");
+		}
 		left.prettyPrint(sb);
 		System.out.print(" " + tok.toString());
 		right.prettyPrint(sb);
+		if(brace){
+			System.out.print(" }");
+		}
 	}
 
 }

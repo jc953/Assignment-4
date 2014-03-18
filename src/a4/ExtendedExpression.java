@@ -7,4 +7,12 @@ public class ExtendedExpression extends Expression {
 		super(tok);
 		this.e = e;
 	}
+	
+	@Override
+	public void prettyPrint(StringBuffer sb) {
+		super.prettyPrint(sb);
+		System.out.print(" [");
+		e.prettyPrint(sb);
+		System.out.print(" ]");
+	}
 }

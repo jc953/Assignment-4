@@ -33,7 +33,7 @@ public class Program implements Node {
 	public void prettyPrint(StringBuffer sb) {
 		for(Rule r: rules){
 			r.prettyPrint(sb);
-			System.out.print(" ;");
+			System.out.println(" ;");
 		}
 
 	}

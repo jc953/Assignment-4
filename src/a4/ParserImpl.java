@@ -90,6 +90,7 @@ public class ParserImpl implements Parser {
 		} else if (tokenizer.peek().getType() == Token.LPAREN) {
 			tokenizer.next();
 			Expression e = parseExpression();
+			e.setParen(true);
 			tokenizer.next();
 			return e;
 		} else {

@@ -1,8 +1,7 @@
 package a4;
 
-public class RelationCondition implements Condition {
+public class RelationCondition extends Condition {
 	protected Expression e1, e2;
-	protected Token tok;
 
 	public RelationCondition(Expression e1, Token tok, Expression e2) {
 		this.e1 = e1;
@@ -24,9 +23,15 @@ public class RelationCondition implements Condition {
 
 	@Override
 	public void prettyPrint(StringBuffer sb) {
+		if(brace){
+			System.out.print(" {");
+		}
 		e1.prettyPrint(sb);
 		System.out.print(" " + tok.toString());
 		e2.prettyPrint(sb);
+		if(brace){
+			System.out.print(" }");
+		}
 	}
 
 }
