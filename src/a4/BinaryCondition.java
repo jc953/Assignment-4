@@ -45,10 +45,30 @@ public class BinaryCondition extends Condition {
 		return head;
 	}
 	
+	public void setHead(Object o){
+		if (o instanceof Rule){
+			rhead = (Rule) o;
+			head = null;
+		} else {
+			head = (Condition) o;
+			rhead = null;
+		}
+	}
+	
 	public void remove(Condition c){
 		if (left.equals(c)){
 			left = null;
 		}
+	}
+	
+	public BinaryCondition getRandomBinaryCondition(){
+		Object o = getHead();
+		while (o instanceof BinaryCondition){
+			o = ((BinaryCondition) o).getHead();
+		}
+		BinaryCondition top = (BinaryCondition) ((Rule)o).getCondition();
+		ArrayList<BinaryCondition> conditions = top.getBinaryConditions();
+		return conditions.get((int) (Math.random()*conditions.size()));
 	}
 	
 	public ArrayList<BinaryCondition> getBinaryConditions(){
@@ -70,6 +90,11 @@ public class BinaryCondition extends Condition {
 			}
 		} 
 		return result;
+	}
+	
+	public Token getRandomToken(){
+		int i = (int)(Math.random()*2);
+		return new Token(30+i, 0);
 	}
 	
 	@Override
@@ -109,35 +134,44 @@ public class BinaryCondition extends Condition {
 			right = c;
 			return getProgram();
 		} else if (r < 0.5){
-			Object o = getHead();
-			while (o instanceof BinaryCondition){
-				o = ((BinaryCondition) o).getHead();
-			}
-			BinaryCondition top = (BinaryCondition) ((Rule)o).getCondition();
-			ArrayList<BinaryCondition> conditions = top.getBinaryConditions();
-			int index = (int) (Math.random()*conditions.size());
+			BinaryCondition temp = getRandomBinaryCondition();
 			if (getHead() instanceof Rule){
-				((Rule) getHead()).setCondition(conditions.get(index));
+				((Rule) getHead()).setCondition(temp);
 			} else {
 				BinaryCondition bc = (BinaryCondition) getHead();
 				if ((bc.getLeft()).equals(this)){
-					bc.setLeft(conditions.get(index));
+					bc.setLeft(temp);
 				} else {
-					bc.setRight(conditions.get(index));
+					bc.setRight(temp);
 				}
 			}
 			return getProgram();
 		} else if (r < 2.0 / 3.0){
-			double i = Math.random();
-			if (i < 0.5){
-				tok = new Token(30, 0);
-			} else {
-				tok = new Token(31, 0);
-			}
+			tok = getRandomToken();
 			return getProgram();
 		} else if (r < 5.0 / 6.0){
-			return this;//This is counting for mutation 3 and 4 as well
+			Token tempTok = getRandomToken();
+			BinaryCondition temp = getRandomBinaryCondition();
+			Object o = getHead();
+			BinaryCondition temp2 = new BinaryCondition(this, tempTok, temp);
+			setHead(temp2);
+			if (o instanceof BinaryCondition){
+				BinaryCondition header = (BinaryCondition) o;
+				temp2.setHead(header);
+				if (header.getLeft().equals(this)){
+					header.setLeft(temp2);
+				} else {
+					header.setRight(temp2);
+				}
+				return getProgram();
+			} else {
+				Rule header = (Rule) o;
+				temp2.setHead(header);
+				header.setCondition(temp2);
+				return getProgram();
+			}
 		} else {
+			return getProgram();
 		}
 	}
 

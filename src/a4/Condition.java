@@ -36,11 +36,14 @@ public abstract class Condition implements Node {
 	public void setLeft(Object o){
 	}
 	
-	public Node getProgram(){
+	public Program getProgram(){
 		if (rhead != null){
 			return rhead.getProgram();
 		}
 		return head.getProgram();
-		
+	}
+	
+	public Token getRandomToken() {
+		return null;
 	}
 }
