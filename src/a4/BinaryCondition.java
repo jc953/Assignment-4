@@ -61,16 +61,6 @@ public class BinaryCondition extends Condition {
 		}
 	}
 	
-	public BinaryCondition getRandomBinaryCondition(){
-		Object o = getHead();
-		while (o instanceof BinaryCondition){
-			o = ((BinaryCondition) o).getHead();
-		}
-		BinaryCondition top = (BinaryCondition) ((Rule)o).getCondition();
-		ArrayList<BinaryCondition> conditions = top.getBinaryConditions();
-		return conditions.get((int) (Math.random()*conditions.size()));
-	}
-	
 	public ArrayList<BinaryCondition> getBinaryConditions(){
 		ArrayList<BinaryCondition> result = new ArrayList<BinaryCondition>();
 		if (left instanceof BinaryCondition){
@@ -89,6 +79,31 @@ public class BinaryCondition extends Condition {
 				result.add(bc);
 			}
 		} 
+		return result;
+	}
+	
+	public ArrayList<Condition> getConditions(){
+		ArrayList<Condition> result = new ArrayList<Condition>();
+		if (left instanceof RelationCondition){
+			result.add((RelationCondition)left);
+		} else {
+			BinaryCondition temp = (BinaryCondition)left;
+			result.add(temp);
+			ArrayList<BinaryCondition> temp1 = temp.getBinaryConditions();
+			for (BinaryCondition bc : temp1){
+				result.add(bc);
+			}
+		}
+		if (right instanceof RelationCondition){
+			result.add((RelationCondition)right);
+		} else {
+			BinaryCondition temp = (BinaryCondition)right;
+			result.add(temp);
+			ArrayList<BinaryCondition> temp1 = temp.getBinaryConditions();
+			for (BinaryCondition bc : temp1){
+				result.add(bc);
+			}
+		}
 		return result;
 	}
 	
@@ -134,7 +149,7 @@ public class BinaryCondition extends Condition {
 			right = c;
 			return getProgram();
 		} else if (r < 0.5){
-			BinaryCondition temp = getRandomBinaryCondition();
+			BinaryCondition temp = getProgram().getRandomBinaryCondition();
 			if (getHead() instanceof Rule){
 				((Rule) getHead()).setCondition(temp);
 			} else {
@@ -151,7 +166,7 @@ public class BinaryCondition extends Condition {
 			return getProgram();
 		} else if (r < 5.0 / 6.0){
 			Token tempTok = getRandomToken();
-			BinaryCondition temp = getRandomBinaryCondition();
+			BinaryCondition temp = getProgram().getRandomBinaryCondition();
 			Object o = getHead();
 			BinaryCondition temp2 = new BinaryCondition(this, tempTok, temp);
 			setHead(temp2);

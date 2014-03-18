@@ -34,14 +34,23 @@ public class Program implements Node {
 	protected Condition getRandomCondition(){
 		ArrayList<Condition> conditions = new ArrayList<Condition>();
 		for (Rule r : rules){
-			Condition c = r.getConditions();
-			
+			ArrayList<Condition> con = r.getCondition().getConditions();
+			for (Condition c : con){
+				conditions.add(c);
+			}
 		}
 		return conditions.get((int) (Math.random()*conditions.size()));
 	}
 	
 	protected BinaryCondition getRandomBinaryCondition(){
-		
+		ArrayList<BinaryCondition> conditions = new ArrayList<BinaryCondition>();
+		for (Rule r : rules){
+			ArrayList<BinaryCondition> con = r.getCondition().getBinaryConditions();
+			for (BinaryCondition c : con){
+				conditions.add(c);
+			}
+		}
+		return conditions.get((int) (Math.random()*conditions.size()));
 	}
 	
 	@Override

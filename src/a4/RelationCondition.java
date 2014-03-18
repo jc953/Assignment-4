@@ -1,7 +1,5 @@
 package a4;
 
-import java.util.ArrayList;
-
 public class RelationCondition extends Condition {
 	protected Expression left, right;
 
@@ -18,7 +16,15 @@ public class RelationCondition extends Condition {
 		return head;
 	}
 	
-
+	public void setHead(Object o){
+		if (o instanceof Rule){
+			rhead = (Rule) o;
+			head = null;
+		} else {
+			head = (Condition) o;
+			rhead = null;
+		}
+	}
 
 	public Token getRandomToken(){
 		int i = (int)(Math.random()*6);
@@ -71,7 +77,7 @@ public class RelationCondition extends Condition {
 			right = e;
 			return getProgram();
 		} else if (r < 0.5){
-			RelationCondition temp = getRandomRelationCondition();
+			Condition temp = getProgram().getRandomCondition();
 			if (getHead() instanceof Rule){
 				((Rule) getHead()).setCondition(temp);
 			} else {
@@ -88,7 +94,7 @@ public class RelationCondition extends Condition {
 			return getProgram();
 		} else if (r < 5.0 / 6.0){
 			Token tempTok = getRandomToken();
-			BinaryCondition temp = ((BinaryCondition) getHead()).getRandomBinaryCondition();
+			BinaryCondition temp = getProgram().getRandomBinaryCondition();
 			Object o = getHead();
 			BinaryCondition temp2 = new BinaryCondition(this, tempTok, temp);
 			setHead(temp2);
@@ -117,9 +123,9 @@ public class RelationCondition extends Condition {
 		if(brace){
 			System.out.print(" {");
 		}
-		e1.prettyPrint(sb);
+		left.prettyPrint(sb);
 		System.out.print(" " + tok.toString());
-		e2.prettyPrint(sb);
+		right.prettyPrint(sb);
 		if(brace){
 			System.out.print(" }");
 		}

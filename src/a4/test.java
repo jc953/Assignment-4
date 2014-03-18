@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 public class test {
 	public static void main(String[] args) {
 		ParserImpl p = new ParserImpl(); 
-		Reader r = new StringReader("5 < 6 --> wait"); 
+		Reader r = new StringReader("2 < 6 --> wait"); 
 		Tokenizer tokenizer = new Tokenizer(r);
 		try{
 			p.parse(r).prettyPrint(null);

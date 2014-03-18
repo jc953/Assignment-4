@@ -1,5 +1,7 @@
 package a4;
 
+import java.util.ArrayList;
+
 /**
  * An interface representing a Boolean condition in a critter program.
  * 
@@ -48,6 +50,12 @@ public abstract class Condition implements Node {
 	}
 	
 	public ArrayList<Condition> getConditions(){
-		
+		ArrayList<Condition> result = new ArrayList<Condition>();
+		result.add(this);
+		return result;
+	}
+	
+	public ArrayList<BinaryCondition> getBinaryConditions(){
+		return null;
 	}
 }
