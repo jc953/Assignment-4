@@ -27,7 +27,7 @@ public class Expression implements Node {
 			System.out.print(" ( " + tok.toString() + " )");
 		}
 		else{
-			System.out.print(tok.toString());
+			System.out.print(" " + tok.toString());
 		}
 
 	}

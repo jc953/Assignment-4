@@ -46,4 +46,8 @@ public abstract class Condition implements Node {
 	public Token getRandomToken() {
 		return null;
 	}
+	
+	public ArrayList<Condition> getConditions(){
+		
+	}
 }

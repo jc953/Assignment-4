@@ -32,9 +32,17 @@ public class Program implements Node {
 	}
 	
 	protected Condition getRandomCondition(){
-		
+		ArrayList<Condition> conditions = new ArrayList<Condition>();
+		for (Rule r : rules){
+			Condition c = r.getConditions();
+			
+		}
+		return conditions.get((int) (Math.random()*conditions.size()));
 	}
 	
+	protected BinaryCondition getRandomBinaryCondition(){
+		
+	}
 	
 	@Override
 	public int size() {
