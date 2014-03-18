@@ -1,7 +1,6 @@
 package a4;
 
 import java.io.Reader;
-
 public class ParserImpl implements Parser {
 
 	/** The tokenizer from which input is read. */
@@ -31,8 +30,7 @@ public class ParserImpl implements Parser {
 	public Program parseProgram() throws SyntaxError {
 		Program result = new Program();
 		while (tokenizer.hasNext()) {
-			System.out.println("g");
-			result.addRule(parseRule());
+			result.addRule(parseRule());	
 		}
 		return result;
 	}
@@ -45,13 +43,16 @@ public class ParserImpl implements Parser {
 
 	public Condition parseCondition() throws SyntaxError {
 		Condition temp = parseRelation();
+		if (!tokenizer.hasNext()) return temp;
 		if (tokenizer.peek().getType() == Token.ARR) {
+			tokenizer.next();
 			return temp;
 		}
 		return new BinaryCondition(temp, tokenizer.next(), parseCondition());
 	}
 
 	public Condition parseRelation() throws SyntaxError {
+		if (!tokenizer.hasNext()) return null;
 		if (tokenizer.peek().getType() == Token.LBRACE) {
 			tokenizer.next();
 			Condition result = parseCondition();
@@ -64,6 +65,7 @@ public class ParserImpl implements Parser {
 
 	public Command parseCommand() throws SyntaxError {
 		Command c = new Command();
+		if (!tokenizer.hasNext()) return null;
 		while (tokenizer.peek().getType() == Token.MEM) {
 			c.addUpdate(parseUpdate());
 		}
@@ -81,6 +83,7 @@ public class ParserImpl implements Parser {
 
 	public Expression parseExpression() throws SyntaxError {
 		Expression e = parseFactor();
+		if (!tokenizer.hasNext()) return e;
 		if (tokenizer.peek().isMulOp() || tokenizer.peek().isAddOp()) {
 			return new BinaryOp(e, tokenizer.next(), parseExpression());
 		}
@@ -88,6 +91,7 @@ public class ParserImpl implements Parser {
 	}
 
 	public Expression parseFactor() throws SyntaxError {
+		if (!tokenizer.hasNext()) return null;
 		if (tokenizer.peek().getType() == Token.NUM) {
 			return new Expression(tokenizer.next().toNumToken());
 		} else if (tokenizer.peek().getType() == Token.LPAREN) {
@@ -96,7 +100,10 @@ public class ParserImpl implements Parser {
 			e.setParen(true);
 			tokenizer.next();
 			return e;
-		} else {
+		} else if(tokenizer.peek().isAction()){
+			return new Expression(tokenizer.next());
+		}
+		else {
 			Token tok = tokenizer.next();
 			tokenizer.next();
 			Expression e = parseExpression();
@@ -104,6 +111,8 @@ public class ParserImpl implements Parser {
 			return new ExtendedExpression(tok, e);
 		}
 	}
+	
+	
 
 	/**
 	 * Consumes a token of the expected type. Throws a SyntaxError if the wrong
