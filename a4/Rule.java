@@ -6,7 +6,7 @@ package a4;
 public class Rule extends AbstractNode {
 
     private Condition condition;
-    // how to represent the command?
+    private Command command;
 
 	@Override
 	public int size() {

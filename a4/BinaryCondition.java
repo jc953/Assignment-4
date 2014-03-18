@@ -1,7 +1,5 @@
 package a4;
 
-//TESTING THAT THIS WORKS
-
 /**
  * A representation of a binary Boolean condition: 'and' or 'or'
  *
@@ -15,7 +13,7 @@ public class BinaryCondition implements Condition {
 	 * @param r
 	 */
 	public BinaryCondition(Condition l, BinaryConditionOperator op, Condition r) {
-		//TODO
+		
 	}
 
 	@Override

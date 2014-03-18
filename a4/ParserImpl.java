@@ -6,9 +6,24 @@ public class ParserImpl implements Parser {
 
     /** The tokenizer from which input is read. */
     Tokenizer tokenizer;
+    Token tok;
 
-    public Program parse(Reader r) {
+    public Program parse(Reader r) throws SyntaxError {
     	tokenizer = new Tokenizer(r);
+    	while (tokenizer.hasNext()){
+    		tok = tokenizer.next();
+    		if (tok.isAction()){
+    			parseAction();
+    		} else if (tok.isAddOp()){
+    			
+    		} else if (tok.isMulOp()){
+    			
+    		} else if (tok.isNum()){
+    			
+    		} else if (tok.isSensor()){
+    			
+    		}
+    	}
     	
     	
     }
@@ -40,6 +55,13 @@ public class ParserImpl implements Parser {
     }
     public Expression parseAtom() throws SyntaxError {
         throw new UnsupportedOperationException();
+    }
+    public Command parseAction() throws SyntaxError {
+    	int type = tok.getType();
+    	if (type >= 10 && type <= 19){
+    		return new Command(tok);
+    	}
+    	
     }
     // add more as necessary...
 
