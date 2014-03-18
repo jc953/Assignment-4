@@ -8,6 +8,11 @@ public class Rule extends AbstractNode {
     private Condition condition;
     private Command command;
 
+    public Rule(Condition condition, Command command){
+    	this.condition = condition;
+    	this.command = command;
+    }
+    
 	@Override
 	public int size() {
 		// TODO Auto-generated method stub

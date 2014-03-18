@@ -8,23 +8,14 @@ public class ParserImpl implements Parser {
     Tokenizer tokenizer;
     Token tok;
 
-    public Program parse(Reader r) throws SyntaxError {
-    	tokenizer = new Tokenizer(r);
-    	while (tokenizer.hasNext()){
-    		tok = tokenizer.next();
-    		if (tok.isAction()){
-    			parseAction();
-    		} else if (tok.isAddOp()){
-    			
-    		} else if (tok.isMulOp()){
-    			
-    		} else if (tok.isNum()){
-    			
-    		} else if (tok.isSensor()){
-    			
-    		}
-    	}
-    	
+    public Program parse(Reader r) {
+    	try {
+			return parseProgram();
+		} catch (SyntaxError e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return null;
     	
     }
 
@@ -36,13 +27,21 @@ public class ParserImpl implements Parser {
      *  @throws SyntaxError if there the input tokens have invalid syntax
      */
     public Program parseProgram() throws SyntaxError {
-        throw new UnsupportedOperationException();
+    	Program result = new Program();
+        while (tokenizer.hasNext()){
+        	result.addRule(parseRule());
+        }
+        return result;
     }
     public Rule parseRule() throws SyntaxError {
-        throw new UnsupportedOperationException();
+        Rule result = new Rule(parseCondition(),parseCommand());
+        return result;
     }
     public Condition parseCondition() throws SyntaxError {
-        throw new UnsupportedOperationException();
+        
+    }
+    public Command parseCommand() throws SyntaxError {
+    	
     }
     public Expression parseExpression() throws SyntaxError {
         return parseTerm();
@@ -60,6 +59,8 @@ public class ParserImpl implements Parser {
     	int type = tok.getType();
     	if (type >= 10 && type <= 19){
     		return new Command(tok);
+    	} else if (type == 20){
+    		tok = tokenizer.next();
     	}
     	
     }

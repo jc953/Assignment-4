@@ -1,22 +1,6 @@
 package a4;
 
-import java.util.ArrayList;
-
-/**
- * A representation of a critter program.
- *
- */
-public class Program extends AbstractNode {
-
-	private ArrayList<Rule> rules;
-	
-	public Program(){
-		rules = new ArrayList<Rule>();
-	}
-	
-	protected void addRule(Rule rule){
-		rules.add(rule);
-	}
+public class RelationCondition implements Condition{
 	
 	@Override
 	public int size() {
@@ -33,7 +17,8 @@ public class Program extends AbstractNode {
 	@Override
 	public void prettyPrint(StringBuffer sb) {
 		// TODO Auto-generated method stub
-
+		
 	}
+	
 
 }
