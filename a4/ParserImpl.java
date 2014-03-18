@@ -8,7 +8,9 @@ public class ParserImpl implements Parser {
     Tokenizer tokenizer;
 
     public Program parse(Reader r) {
-        throw new UnsupportedOperationException();
+    	tokenizer = new Tokenizer(r);
+    	
+    	
     }
 
     /** Parses a program from the stream of tokens provided by the Tokenizer,
