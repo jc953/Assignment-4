@@ -5,7 +5,6 @@ public class ParserImpl implements Parser {
 
 	/** The tokenizer from which input is read. */
 	Tokenizer tokenizer;
-	Token tok;
 
 	public Program parse(Reader r) {
 		tokenizer = new Tokenizer(r);
@@ -38,6 +37,7 @@ public class ParserImpl implements Parser {
 	public Rule parseRule() throws SyntaxError {
 		Rule result = new Rule(parseCondition(), parseCommand());
 		result.getCondition().setParent(result);
+		result.getCommand().setParent(result);
 		return result;
 	}
 
