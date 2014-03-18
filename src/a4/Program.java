@@ -31,6 +31,11 @@ public class Program implements Node {
 		return rules.size();
 	}
 	
+	protected Condition getRandomCondition(){
+		
+	}
+	
+	
 	@Override
 	public int size() {
 		return rules.size() + 1;

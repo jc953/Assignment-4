@@ -31,6 +31,7 @@ public class Command implements Node {
 		return null;
 	}
 
+
 	@Override
 	public void prettyPrint(StringBuffer sb) {
 		for(Update u: updates){

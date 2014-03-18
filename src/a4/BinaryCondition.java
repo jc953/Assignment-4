@@ -92,6 +92,11 @@ public class BinaryCondition extends Condition {
 		return result;
 	}
 	
+	public Token getRandomToken(){
+		int i = (int)(Math.random()*2);
+		return new Token(30+i, 0);
+	}
+	
 	@Override
 	public int size() {
 		// TODO Auto-generated method stub
@@ -142,21 +147,10 @@ public class BinaryCondition extends Condition {
 			}
 			return getProgram();
 		} else if (r < 2.0 / 3.0){
-			double i = Math.random();
-			if (i < 0.5){
-				tok = new Token(30, 0);
-			} else {
-				tok = new Token(31, 0);
-			}
+			tok = getRandomToken();
 			return getProgram();
 		} else if (r < 5.0 / 6.0){
-			Token tempTok;
-			double i = Math.random();
-			if (i < 0.5){
-				tempTok = new Token(30, 0);
-			} else {
-				tempTok = new Token(31, 0);
-			}
+			Token tempTok = getRandomToken();
 			BinaryCondition temp = getRandomBinaryCondition();
 			Object o = getHead();
 			BinaryCondition temp2 = new BinaryCondition(this, tempTok, temp);
