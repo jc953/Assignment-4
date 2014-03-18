@@ -4,7 +4,7 @@ package a4;
  * A representation of a critter rule.
  */
 public class Rule implements Node {
-
+	private Program program;
 	private Condition condition;
 	private Command command;
 
@@ -21,10 +21,41 @@ public class Rule implements Node {
 
 	@Override
 	public Node mutate() {
-		// TODO Auto-generated method stub
-		return null;
+		double r = Math.random();
+		if (r < 1.0/6.0){
+			program.removeRule(this);
+			return program;
+		} else if (r < 1.0/3.0){
+			int i = (int) (Math.random()*program.numRules());
+			Rule temp = program.getRule(i);
+			this.condition = temp.getCondition();
+			this.command = temp.getCommand();
+			return program;
+		} else {
+			return program; //counts for mutations 2 4 5 and 6
+		}
 	}
 
+	protected void setProgram(Program p){
+		program = p;
+	}
+	
+	protected Condition getCondition(){
+		return condition;
+	}
+	
+	protected void setCondition(Condition c){
+		condition = c;
+	}
+	
+	protected Command getCommand(){
+		return command;
+	}
+	
+	protected Program getProgram(){
+		return program;
+	}
+	
 	@Override
 	public void prettyPrint(StringBuffer sb) {
 		condition.prettyPrint(sb);

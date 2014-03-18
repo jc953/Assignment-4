@@ -9,6 +9,7 @@ public class ParserImpl implements Parser {
 	Token tok;
 
 	public Program parse(Reader r) {
+		tokenizer = new Tokenizer(r);
 		try {
 			return parseProgram();
 		} catch (SyntaxError e) {
@@ -30,6 +31,7 @@ public class ParserImpl implements Parser {
 	public Program parseProgram() throws SyntaxError {
 		Program result = new Program();
 		while (tokenizer.hasNext()) {
+			System.out.println("g");
 			result.addRule(parseRule());
 		}
 		return result;
@@ -37,6 +39,7 @@ public class ParserImpl implements Parser {
 
 	public Rule parseRule() throws SyntaxError {
 		Rule result = new Rule(parseCondition(), parseCommand());
+		result.getCondition().setParent(result);
 		return result;
 	}
 
