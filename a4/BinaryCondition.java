@@ -35,8 +35,9 @@ public class BinaryCondition implements Condition {
 
 	@Override
 	public void prettyPrint(StringBuffer sb) {
-		// TODO Auto-generated method stub
-
+		left.prettyPrint(sb);
+		System.out.print(" " + tok.toString());
+		right.prettyPrint(sb);
 	}
 
 }

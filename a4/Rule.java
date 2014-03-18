@@ -27,8 +27,9 @@ public class Rule implements Node {
 
 	@Override
 	public void prettyPrint(StringBuffer sb) {
-		// TODO Auto-generated method stub
-
+		condition.prettyPrint(sb);
+		System.out.print(" -->");
+		command.prettyPrint(sb);
 	}
 
 }

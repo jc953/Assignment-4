@@ -24,8 +24,9 @@ public class RelationCondition implements Condition {
 
 	@Override
 	public void prettyPrint(StringBuffer sb) {
-		// TODO Auto-generated method stub
-
+		e1.prettyPrint(sb);
+		System.out.print(" " + tok.toString());
+		e2.prettyPrint(sb);
 	}
 
 }

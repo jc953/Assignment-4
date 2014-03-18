@@ -22,7 +22,7 @@ public class Expression implements Node {
 
 	@Override
 	public void prettyPrint(StringBuffer sb) {
-		// TODO Auto-generated method stub
+		if (tok != null) System.out.print(" " + tok.toString());
 
 	}
 

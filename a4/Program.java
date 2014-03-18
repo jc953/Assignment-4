@@ -31,6 +31,10 @@ public class Program implements Node {
 
 	@Override
 	public void prettyPrint(StringBuffer sb) {
+		for(Rule r: rules){
+			r.prettyPrint(sb);
+			System.out.print(" ;");
+		}
 
 	}
 
