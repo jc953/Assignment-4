@@ -127,6 +127,14 @@ public class Token {
 	public boolean isSensor() {
 		return 80 <= type && type <=82;
 	}
+	
+	/**
+	 * Determine whether this token is of rel type.
+	 * @return true if this token is of rel type
+	 */
+	public boolean isRel() {
+		return 32 <= type && type <= 37;
+	}
 
 	@Override
 	public String toString() {
