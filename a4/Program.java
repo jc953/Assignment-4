@@ -3,7 +3,7 @@ package a4;
  * A representation of a critter program.
  *
  */
-public class Program implements Node {
+public class Program extends AbstractNode {
 
 	@Override
 	public int size() {
