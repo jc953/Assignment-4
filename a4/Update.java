@@ -23,8 +23,9 @@ public class Update implements Node {
 
 	@Override
 	public void prettyPrint(StringBuffer sb) {
-		// TODO Auto-generated method stub
-
+		ee.prettyPrint(sb);
+		System.out.print(" :=");
+		e.prettyPrint(sb);
 	}
 
 }

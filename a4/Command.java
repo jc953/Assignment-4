@@ -33,7 +33,12 @@ public class Command implements Node {
 
 	@Override
 	public void prettyPrint(StringBuffer sb) {
-		
+		for(Update u: updates){
+			u.prettyPrint(sb);			
+		}
+		if (action != null){
+			action.prettyPrint(sb);
+		}
 
 	}
 }
