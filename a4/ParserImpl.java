@@ -38,31 +38,36 @@ public class ParserImpl implements Parser {
         return result;
     }
     public Condition parseCondition() throws SyntaxError {
-        
+    	RelationCondition temp = parseRelation();
+    	if (tokenizer.peek().getType() == Token.ARR){
+    		return temp;
+    	} 
+    	return new BinaryCondition(temp, tokenizer.next(), parseCondition());
     }
     public Command parseCommand() throws SyntaxError {
     	
     }
-    public Expression parseExpression() throws SyntaxError {
-        return parseTerm();
+    
+    public RelationCondition parseRelation() throws SyntaxError {
+    	RelationCondition result = new RelationCondition(parseExpression(), tokenizer.next(), parseExpression());
+    	return result;
     }
-    public Expression parseTerm() throws SyntaxError {
-        throw new UnsupportedOperationException();
+    
+    public Expression parseExpression() throws SyntaxError {
+        Expression temp = parseFactor();
+        if (tokenizer.peek().isAddOp() || tokenizer.peek().isMulOp()){
+        	return new BinaryOp(temp, tokenizer.next(), parseExpression());
+        } 
+        return temp;
     }
     public Expression parseFactor() throws SyntaxError {
-        throw new UnsupportedOperationException();
-    }
-    public Expression parseAtom() throws SyntaxError {
-        throw new UnsupportedOperationException();
-    }
-    public Command parseAction() throws SyntaxError {
-    	int type = tok.getType();
-    	if (type >= 10 && type <= 19){
-    		return new Command(tok);
-    	} else if (type == 20){
-    		tok = tokenizer.next();
+    	if (tokenizer.peek().getType() == Token.NUM){
+    		return new Expression(tokenizer.next());
     	}
-    	
+    	else if (tokenizer.peek().isSensor()){
+        	Token t = tokenizer.next();
+        	new ExtendedToken(t.getType(),tokenizer.getLineNo(),parseExpression());
+        }
     }
     // add more as necessary...
 

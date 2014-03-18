@@ -5,6 +5,8 @@ package a4;
  *
  */
 public class BinaryCondition implements Condition {
+	Condition l, r;
+	Token tok;
 
 	/**
 	 * Create an AST representation of l op r.
@@ -12,8 +14,10 @@ public class BinaryCondition implements Condition {
 	 * @param op
 	 * @param r
 	 */
-	public BinaryCondition(Condition l, BinaryConditionOperator op, Condition r) {
-		
+	public BinaryCondition(Condition l, Token tok, Condition r) {
+		this.l = l;
+		this.tok = tok;
+		this.r = r;
 	}
 
 	@Override

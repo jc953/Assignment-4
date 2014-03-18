@@ -1,7 +1,13 @@
 package a4;
 
 // Represents +, -, *, /, mod
-public abstract class BinaryOp extends Expression { // need not be abstract
+public class BinaryOp extends Expression { // need not be abstract
     private Expression left, right;
-    // how to keep track of which operator it is?
+    private Token tok;
+    
+    public BinaryOp(Expression l, Token tok, Expression r){
+    	left = l;
+    	this.tok = tok;
+    	right = r;
+    }
 }

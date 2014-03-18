@@ -343,4 +343,8 @@ public class Tokenizer implements Iterator<Token> {
 		state = READY;
 		buf = new StringBuffer();
 	}
+	
+	protected int getLineNo() {
+		return lineNo;
+	}
 }
