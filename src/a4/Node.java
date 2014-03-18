@@ -9,7 +9,7 @@ public interface Node {
 	 * The number of nodes in this AST, including the current node. This can be
 	 * helpful for implementing mutate() correctly.
 	 */
-	int size();
+	int size() ;
 
 	/**
 	 * Return a version of the same AST with one random mutation in it. May have
