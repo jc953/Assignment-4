@@ -38,7 +38,7 @@ public class ParserImpl implements Parser {
         return result;
     }
     public Condition parseCondition() throws SyntaxError {
-    	RelationCondition temp = parseRelation();
+    	RelationCondition temp = new RelationCondition(parseExpression(), tokenizer.next(), parseExpression());
     	if (tokenizer.peek().getType() == Token.ARR){
     		return temp;
     	} 
@@ -48,28 +48,9 @@ public class ParserImpl implements Parser {
     	
     }
     
-    public RelationCondition parseRelation() throws SyntaxError {
-    	RelationCondition result = new RelationCondition(parseExpression(), tokenizer.next(), parseExpression());
-    	return result;
-    }
-    
     public Expression parseExpression() throws SyntaxError {
-        Expression temp = parseFactor();
-        if (tokenizer.peek().isAddOp() || tokenizer.peek().isMulOp()){
-        	return new BinaryOp(temp, tokenizer.next(), parseExpression());
-        } 
-        return temp;
+    	
     }
-    public Expression parseFactor() throws SyntaxError {
-    	if (tokenizer.peek().getType() == Token.NUM){
-    		return new Expression(tokenizer.next());
-    	}
-    	else if (tokenizer.peek().isSensor()){
-        	Token t = tokenizer.next();
-        	new ExtendedToken(t.getType(),tokenizer.getLineNo(),parseExpression());
-        }
-    }
-    // add more as necessary...
 
     /** Consumes a token of the expected type. Throws a SyntaxError if the wrong kind of token is encountered. */
     public void consume(int tokenType) throws SyntaxError {

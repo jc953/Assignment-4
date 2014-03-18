@@ -5,7 +5,7 @@ package a4;
  *
  */
 public class BinaryCondition implements Condition {
-	Condition l, r;
+	Condition left, right;
 	Token tok;
 
 	/**
@@ -14,10 +14,10 @@ public class BinaryCondition implements Condition {
 	 * @param op
 	 * @param r
 	 */
-	public BinaryCondition(Condition l, Token tok, Condition r) {
-		this.l = l;
+	public BinaryCondition(Condition left, Token tok, Condition right) {
+		this.left = left;
 		this.tok = tok;
-		this.r = r;
+		this.right = right;
 	}
 
 	@Override

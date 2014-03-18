@@ -3,7 +3,7 @@ package a4;
 /**
  * A representation of a critter rule.
  */
-public class Rule extends AbstractNode {
+public class Rule implements Node {
 
     private Condition condition;
     private Command command;
