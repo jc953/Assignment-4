@@ -1,5 +1,7 @@
 package a4;
 
+import java.util.ArrayList;
+
 public class RelationCondition extends Condition {
 	protected Expression left, right;
 
@@ -7,6 +9,8 @@ public class RelationCondition extends Condition {
 		this.left = left;
 		this.tok = tok;
 		this.right = right;
+		this.left.setParent(this);
+		this.right.setParent(this);
 	}
 	
 	public Object getHead(){
@@ -35,6 +39,19 @@ public class RelationCondition extends Condition {
 	public int size() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public ArrayList<Expression> getExpressions(){
+		ArrayList<Expression> result = new ArrayList<Expression>();
+		ArrayList<Expression> temp1 = left.getExpressions();
+		ArrayList<Expression> temp2 = right.getExpressions();
+		for (Expression e : temp1){
+			result.add(e);
+		}
+		for (Expression e : temp2){
+			result.add(e);
+		}
+		return result;
 	}
 
 	@Override

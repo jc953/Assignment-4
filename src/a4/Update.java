@@ -6,8 +6,10 @@ public class Update implements Node {
 	Expression e1, e2;
 
 	public Update(Expression e1, Expression e2) {
-		this.e1 = e2;
-		this.e1 = e2;
+		this.e1 = e1;
+		this.e1.setParent(this);
+		this.e2 = e2;
+		this.e2.setParent(this);
 		tok = new Token(0, 0);
 	}
 	
@@ -19,12 +21,24 @@ public class Update implements Node {
 		command = c;
 	}
 	
+	public Command getCommand(){
+		return command;
+	}
+	
 	public Expression getExpression1(){
 		return e1;
 	}
 	
 	public Expression getExpression2(){
 		return e2;
+	}
+	
+	public void setExpression1(Expression e1){
+		this.e1 = e1;
+	}
+	
+	public void setExpression2(Expression e2){
+		this.e2 = e2;
 	}
 
 	@Override
