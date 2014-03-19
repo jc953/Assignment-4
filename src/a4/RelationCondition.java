@@ -27,6 +27,7 @@ public class RelationCondition extends Condition {
 	}
 	
 	public void setLeft(Expression e){
+		left = e;
 		e.setParent(this);
 	}
 	
