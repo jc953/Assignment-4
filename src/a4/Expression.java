@@ -35,6 +35,12 @@ public class Expression implements Node {
 		result.add(this);
 		return result;
 	}
+	
+	public ArrayList<Node> getNodes(){
+		ArrayList<Node> result = new ArrayList<Node>();
+		result.add(this);
+		return result;
+	}
 
 	
 	/**

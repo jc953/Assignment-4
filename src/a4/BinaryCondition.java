@@ -173,6 +173,20 @@ public class BinaryCondition extends Condition {
 		return new Token(30+i, 0);
 	}
 	
+	public ArrayList<Node> getNodes(){
+		ArrayList<Node> result = new ArrayList<Node>();
+		result.add(this);
+		ArrayList<Node> temp1 = left.getNodes();
+		ArrayList<Node> temp2 = right.getNodes();
+ 		for (Node n : temp1){
+			result.add(n);
+		}
+ 		for (Node n : temp2){
+			result.add(n);
+		}
+		return result;
+	}
+	
 	@Override
 	public int size() {
 		// TODO Auto-generated method stub

@@ -101,6 +101,24 @@ public class Command implements Node {
 		}
 		return result;
 	}
+	
+	public ArrayList<Node> getNodes(){
+		ArrayList<Node> result = new ArrayList<Node>();
+		result.add(this);
+		if (action != null){
+			ArrayList<Node> temp1 = action.getNodes();
+			for (Node n : temp1){
+				result.add(n);
+			}
+		}
+		for (Update u : updates){
+			ArrayList<Node> temp2 = u.getNodes();
+			for (Node n : temp2){
+				result.add(n);
+			}
+		}
+		return result;
+	}
 
 	@Override
 	public int size() {

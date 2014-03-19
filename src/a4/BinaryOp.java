@@ -41,6 +41,19 @@ public class BinaryOp extends Expression { // need not be abstract
 		return result;
 	}
 	
+	public ArrayList<Node> getNodes(){
+		ArrayList<Node> result = new ArrayList<Node>();
+		result.add(this);
+		ArrayList<Node> temp1 = left.getNodes();
+		ArrayList<Node> temp2 = right.getNodes();
+ 		for (Node n : temp1){
+			result.add(n);
+		}
+ 		for (Node n : temp2){
+			result.add(n);
+		}
+		return result;
+	}
 	
 	/**
 	 * @return a random Token 
