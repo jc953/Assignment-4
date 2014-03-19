@@ -4,6 +4,7 @@ package a4;
 public class Expression implements Node {
 	Token tok;
 	boolean paren;
+	Object head;
 
 	public Expression(Token tok) {
 		this.tok = tok;
@@ -20,6 +21,7 @@ public class Expression implements Node {
 	public Node mutate() {
 		return null;
 	}
+
 
 	@Override
 	public void prettyPrint(StringBuffer sb) {
