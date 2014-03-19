@@ -5,6 +5,7 @@ public class ParserImpl implements Parser {
 
 	/** The tokenizer from which input is read. */
 	Tokenizer tokenizer;
+	Token tok;
 
 	public Program parse(Reader r) {
 		tokenizer = new Tokenizer(r);

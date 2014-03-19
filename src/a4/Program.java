@@ -53,6 +53,13 @@ public class Program implements Node {
 		return conditions.get((int) (Math.random()*conditions.size()));
 	}
 	
+	protected Update getRandomUpdate(){
+		int i = (int)(Math.random()*rules.size());
+		Command temp = rules.get(i).getCommand();
+		ArrayList<Update> temp2 = temp.getUpdates();
+		return temp2.get((int)(Math.random()*temp2.size()));
+	}
+	
 	@Override
 	public int size() {
 		return rules.size() + 1;

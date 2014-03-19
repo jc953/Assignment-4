@@ -14,8 +14,13 @@ public class Command implements Node {
 
 	public void addUpdate(Update u) {
 		updates.add(u);
+		u.addCommand(this);
 	}
 
+	public void removeUpdate(Update u){
+		updates.remove(u);
+	}
+	
 	public void addAction(Expression e) {
 		action = e;
 	}
