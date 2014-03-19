@@ -12,13 +12,14 @@ public class BinaryOp extends Expression { // need not be abstract
 	
 	public void prettyPrint(StringBuffer sb) {
 		if(paren){
-			System.out.print(" (");
+			sb.append(" (");
 		}
 		left.prettyPrint(sb);
-		System.out.print(" " + tok.toString());
+		sb.append(" " + tok.toString());
 		right.prettyPrint(sb);
 		if(paren){
-			System.out.print(" )");
+			sb.append(" )");
 		}
+		if(sb.charAt(0)==' ') sb = sb.deleteCharAt(0);
 	}
 }

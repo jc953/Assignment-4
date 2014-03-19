@@ -51,9 +51,11 @@ public class Update implements Node {
 
 	@Override
 	public void prettyPrint(StringBuffer sb) {
+		sb.append(" mem [");
 		e1.prettyPrint(sb);
-		System.out.print(" :=");
+		sb.append(" ] :=");
 		e2.prettyPrint(sb);
+		if (sb.charAt(0)==' ') sb = sb.deleteCharAt(0);
 	}
 
 }
