@@ -1,10 +1,21 @@
 package a4;
 
 import java.util.ArrayList;
-
+/**
+ * A RelationCondition represents a Critter Language feature which compares two expressions
+ * with a logical operator (!,=,<,> and so on) 
+ * @author Ishaan
+ *
+ */
 public class RelationCondition extends Condition {
 	protected Expression left, right;
 
+	/**
+	 * Constructor
+	 * @param left
+	 * @param tok
+	 * @param right
+	 */
 	public RelationCondition(Expression left, Token tok, Expression right) {
 		this.left = left;
 		this.tok = tok;
@@ -13,23 +24,44 @@ public class RelationCondition extends Condition {
 		this.right.setParent(this);
 	}
 	
+	/**
+	 * @return the right side Expression of the RelationCondition
+	 */
 	public Expression getRight(){
 		return right;
 	}
 	
+	
+	/**
+	 * @return the left side Expression of the RelationCondition
+	 */
 	public Expression getLeft(){
 		return left;
 	}
 	
+	
+	/**
+	 * set the right side Expression of the RelationCondition
+	 * @param e
+	 */
 	public void setRight(Expression e){
 		right = e;
 		e.setParent(this);
 	}
 	
+	
+	/**
+	 * set the left side Expression of the RelationCondition
+	 * @param e
+	 */
 	public void setLeft(Expression e){
 		e.setParent(this);
 	}
 	
+	
+	/**
+	 * @return the head of the RelationCondition
+	 */
 	public Object getHead(){
 		if (rhead != null){
 			return rhead;
@@ -37,6 +69,11 @@ public class RelationCondition extends Condition {
 		return head;
 	}
 	
+	
+	/**
+	 * set the head of the RelationCondition
+	 * @param o
+	 */
 	public void setHead(Object o){
 		if (o instanceof Rule){
 			rhead = (Rule) o;
@@ -47,6 +84,10 @@ public class RelationCondition extends Condition {
 		}
 	}
 
+	
+	/**
+	 * @return a random Token
+	 */
 	public Token getRandomToken(){
 		int i = (int)(Math.random()*6);
 		return new Token(32+i, 0);
@@ -58,6 +99,9 @@ public class RelationCondition extends Condition {
 		return 0;
 	}
 
+	/**
+	 * @return a list of the expressions that extend from this RelationCondition
+	 */
 	public ArrayList<Expression> getExpressions(){
 		ArrayList<Expression> result = new ArrayList<Expression>();
 		ArrayList<Expression> temp1 = left.getExpressions();
@@ -152,6 +196,10 @@ public class RelationCondition extends Condition {
 		}
 	}
 	
+	
+	/**
+	 * @return a list of the nodes thats extend from this RelationCondition
+	 */
 	public ArrayList<Node> getNodes(){
 		ArrayList<Node> result = new ArrayList<Node>();
 		result.add(this);

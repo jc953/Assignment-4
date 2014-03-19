@@ -4,33 +4,58 @@ import java.util.ArrayList;
 
 /**
  * A representation of a critter program.
- * 
+ * represents the top of the Abstract Syntax Tree for Parsing the Critter Language
  */
 public class Program implements Node {
 
 	private ArrayList<Rule> rules;
 
+	/**
+	 * Constructor
+	 */
 	public Program() {
 		rules = new ArrayList<Rule>();
 	}
 
+	
+	/**
+	 * adds a rule node to this program
+	 * @param rule
+	 */
 	protected void addRule(Rule rule) {
 		rules.add(rule);
 		rule.setProgram(this);
 	}
 	
+	/**
+	 * removes a rule node from this program
+	 * @param rule
+	 */
 	protected void removeRule(Rule rule){
 		rules.remove(rule);
 	}
 	
+	/**
+	 * get a particular rule node
+	 * @param i
+	 * @return the rule node
+	 */
 	protected Rule getRule(int i){
 		return rules.get(i);
 	}
 
+	/**
+	 * 
+	 * @return number of rule nodes in this program
+	 */
 	protected int numRules(){
 		return rules.size();
 	}
 	
+	
+	/**
+	 * @return a random condition
+	 */
 	protected Condition getRandomCondition(){
 		ArrayList<Condition> conditions = new ArrayList<Condition>();
 		for (Rule r : rules){
@@ -42,6 +67,10 @@ public class Program implements Node {
 		return conditions.get((int) (Math.random()*conditions.size()));
 	}
 	
+	
+	/**
+	 * @return a random BinaryCondition
+	 */
 	protected BinaryCondition getRandomBinaryCondition(){
 		ArrayList<BinaryCondition> conditions = new ArrayList<BinaryCondition>();
 		for (Rule r : rules){
@@ -53,6 +82,10 @@ public class Program implements Node {
 		return conditions.get((int) (Math.random()*conditions.size()));
 	}
 	
+	
+	/**
+	 * @return a random Update
+	 */
 	protected Update getRandomUpdate(){
 		int i = (int)(Math.random()*rules.size());
 		Command temp = rules.get(i).getCommand();
@@ -60,6 +93,10 @@ public class Program implements Node {
 		return temp2.get((int)(Math.random()*temp2.size()));
 	}
 	
+	
+	/**
+	 * @return a random Expression
+	 */
 	protected Expression getRandomExpression(){
 		ArrayList<Expression> expressions = new ArrayList<Expression>();
 		for (Rule r : rules){
@@ -111,6 +148,10 @@ public class Program implements Node {
 		}
 	}
 	
+	
+	/**
+	 * @return a random Node
+	 */
 	public Node getRandomNode(){
 		ArrayList<Node> nodes = new ArrayList<Node>();
 		nodes.add(this);
