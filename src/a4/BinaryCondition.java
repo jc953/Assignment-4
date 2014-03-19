@@ -173,6 +173,9 @@ public class BinaryCondition extends Condition {
 		return new Token(30+i, 0);
 	}
 	
+	/**
+	 * @return a list of Node including and beneath this node.
+	 */
 	public ArrayList<Node> getNodes(){
 		ArrayList<Node> result = new ArrayList<Node>();
 		result.add(this);
@@ -193,7 +196,6 @@ public class BinaryCondition extends Condition {
 		return 0;
 	}
 	
-
 	@Override
 	public Node mutate() {
 		double r = Math.random();

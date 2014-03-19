@@ -36,6 +36,9 @@ public class Expression implements Node {
 		return result;
 	}
 	
+	/**
+	 * @return a list of Node including and beneath this node.
+	 */
 	public ArrayList<Node> getNodes(){
 		ArrayList<Node> result = new ArrayList<Node>();
 		result.add(this);
@@ -177,7 +180,6 @@ public class Expression implements Node {
 		}
 	}
 	
-	
 	/**
 	 * sets the parent node to the value specified
 	 * @return the the mutated Node
@@ -186,7 +188,6 @@ public class Expression implements Node {
 		head = o;
 	}
 
-	
 	/**
 	 * gets the root, Program Node that this Expression stems from
 	 * @return the the mutated Node
@@ -212,7 +213,6 @@ public class Expression implements Node {
 			sb.append(" " + tok.toString());
 		}
 		if(sb.charAt(0)==' ') sb = sb.deleteCharAt(0);
-
 	}
 	
 	
@@ -223,6 +223,4 @@ public class Expression implements Node {
 	public void setParen(boolean b){
 		paren = b;
 	}
-		
-
 }
