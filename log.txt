@@ -1,0 +1,367 @@
+commit 923945efe4b2d48f401f2709fcd3f93d68e486ac
+Merge: b2029a1 07e16aa
+Author: iaj8 <iaj8@cornell.edu>
+Date:   Tue Mar 18 21:59:19 2014 -0400
+
+    Merge branch 'master' of https://github.com/jc953/Assignment-4
+
+commit b2029a1b5366a07675e3064507535f1d22b1ee04
+Author: iaj8 <iaj8@cornell.edu>
+Date:   Tue Mar 18 21:59:08 2014 -0400
+
+    more parsing
+
+commit 07e16aa3ae7b8488a0d782327835206ad2402b95
+Author: jc953 <jc953@cornell.edu>
+Date:   Tue Mar 18 21:58:52 2014 -0400
+
+    expression mutations
+
+commit 3bd32d28e0917a452a4e703031fd7b7554d55c09
+Author: jc953 <jc953@cornell.edu>
+Date:   Tue Mar 18 21:50:04 2014 -0400
+
+    sending over expression mutation
+
+
+
+commit 138a4a00a58cc0d3dc6c502dbb88c781052c6ea0
+Merge: 8fda06a 6b3183e
+Author: jc953 <jc953@cornell.edu>
+Date:   Tue Mar 18 21:00:33 2014 -0400
+
+    Merge branch 'master' of https://github.com/jc953/Assignment-4
+
+
+
+commit 8fda06a5418e779d2f031e088f4afe51f6a79d7f
+Author: jc953 <jc953@cornell.edu>
+Date:   Tue Mar 18 21:00:27 2014 -0400
+
+    epxresion edit
+
+
+
+commit 6b3183e604bb35fea14078a7049432b167d3cfc7
+Author: iaj8 <iaj8@cornell.edu>
+Date:   Tue Mar 18 20:59:20 2014 -0400
+
+    Printing
+
+
+
+commit cb9d3e986272bbc8d1523f272f944b1e695f3221
+Merge: 54a5899 47c95cf
+Author: iaj8 <iaj8@cornell.edu>
+Date:   Tue Mar 18 20:50:45 2014 -0400
+
+    Merge branch 'master' of https://github.com/jc953/Assignment-4
+
+
+
+commit 54a589951c5b73ecdec2889b8af1ab09863c4199
+Author: iaj8 <iaj8@cornell.edu>
+Date:   Tue Mar 18 20:50:18 2014 -0400
+
+    Update
+
+
+
+commit 47c95cfedb6600c137018122a690305da131e0c3
+Author: jc953 <jc953@cornell.edu>
+Date:   Tue Mar 18 20:44:17 2014 -0400
+
+    test
+
+
+
+commit b53bec1b9e685c07b05af1a8723ab63ae6a9e5e4
+Merge: 271898e a85bde8
+Author: iaj8 <iaj8@cornell.edu>
+Date:   Tue Mar 18 20:37:06 2014 -0400
+
+    Merge branch 'master' of https://github.com/jc953/Assignment-4
+
+
+
+commit 271898ef32c0bf02be2ccfd3ace34d1f1597dc27
+Author: iaj8 <iaj8@cornell.edu>
+Date:   Tue Mar 18 20:36:42 2014 -0400
+
+    testing
+
+commit a85bde8e09949180ea705cb626c66071852039c3
+Author: jc953 <jc953@cornell.edu>
+Date:   Tue Mar 18 20:36:23 2014 -0400
+
+    update mutate
+
+
+
+commit bed94c04034dcd788e0ba805d9fb7f5d010030a4
+Merge: cab2a49 b8e7fe1
+Author: iaj8 <iaj8@cornell.edu>
+Date:   Tue Mar 18 20:11:28 2014 -0400
+
+    Merge branch 'master' of https://github.com/jc953/Assignment-4
+
+
+
+commit cab2a494c0f4ebf1551a4f6d32d16e88b16f76c9
+Author: iaj8 <iaj8@cornell.edu>
+Date:   Tue Mar 18 20:10:55 2014 -0400
+
+    Debugging
+
+
+
+commit b8e7fe102aaf818d073e3cfbd87a5a6204099b5c
+Author: jc953 <jc953@cornell.edu>
+Date:   Tue Mar 18 19:18:23 2014 -0400
+
+    command mutate
+
+
+
+commit 485f905e4309eb02a7828eaa8ef18bcdeed02194
+Author: jc953 <jc953@cornell.edu>
+Date:   Tue Mar 18 19:00:53 2014 -0400
+
+    fixing git
+
+
+
+commit c312a06cbe9798c90e04ef448cb2bd2dbf637dcb
+Author: jc953 <jc953@cornell.edu>
+Date:   Tue Mar 18 18:57:06 2014 -0400
+
+    relationcondition mutate done
+
+
+
+commit badbc35c321fc41022d21c3a0f069bad3306904d
+Author: jc953 <jc953@cornell.edu>
+Date:   Tue Mar 18 18:36:05 2014 -0400
+
+    printing updated
+
+
+
+commit 4a1d38c55117bb213db87495790ff421f491fb27
+Merge: 83e6448 2e0e8cf
+Author: iaj8 <iaj8@cornell.edu>
+Date:   Tue Mar 18 18:31:58 2014 -0400
+
+    Merge branch 'master' of https://github.com/jc953/Assignment-4
+
+
+
+commit 2e0e8cfaf75753285ebf64d82476112d7ccaff15
+Author: jc953 <jc953@cornell.edu>
+Date:   Tue Mar 18 18:30:59 2014 -0400
+
+    relationcondition mutate
+
+
+
+commit 83e644884fce2d529c718a9e852bd6254d0663a1
+Author: iaj8 <iaj8@cornell.edu>
+Date:   Tue Mar 18 18:29:24 2014 -0400
+
+    Parsing complete
+
+
+
+commit 1d88cbf87458e71404f233443ccc967157e02443
+Author: jc953 <jc953@cornell.edu>
+Date:   Tue Mar 18 17:26:53 2014 -0400
+
+    binarycondition should be done
+
+
+
+commit 29aebe193879de842332614c4043668d7d182e61
+Merge: edb3403 a15285d
+Author: iaj8 <iaj8@cornell.edu>
+Date:   Tue Mar 18 17:12:28 2014 -0400
+
+    Merge branch 'master' of https://github.com/jc953/Assignment-4
+
+
+
+commit a15285d4dc291577db4bcd30dec2072b607347aa
+Author: jc953 <jc953@cornell.edu>
+Date:   Tue Mar 18 17:11:42 2014 -0400
+
+    .project fix
+
+
+
+commit edb340337348e3b3d0146fad0ae83b509ff56b22
+Author: iaj8 <iaj8@cornell.edu>
+Date:   Tue Mar 18 17:11:24 2014 -0400
+
+    test
+
+
+
+commit e4f753b1783ffe53a23f6ff56c51229365c4618e
+Author: jc953 <jc953@cornell.edu>
+Date:   Tue Mar 18 16:59:36 2014 -0400
+
+    mutation draft
+
+
+
+commit 6266eccf32d23e01f83b000e86960ae98dc30e56
+Author: iaj8 <iaj8@cornell.edu>
+Date:   Tue Mar 18 12:27:01 2014 -0400
+
+    Pretty Printing done
+
+
+
+commit aaa6bb33de469e2c48db9541a4231d91f37df850
+Author: jc953 <jc953@cornell.edu>
+Date:   Tue Mar 18 11:56:44 2014 -0400
+
+    fixed .project
+
+
+
+commit 1a6c7886ae0306aeecd5663e3d991416a6571381
+Author: iaj8 <iaj8@cornell.edu>
+Date:   Tue Mar 18 11:50:49 2014 -0400
+
+    printing cut 2
+
+
+
+commit 5dce5ce1321ef3a47e16544a9d7a11b483e5fab2
+Author: iaj8 <iaj8@cornell.edu>
+Date:   Tue Mar 18 06:16:48 2014 -0400
+
+    Printing first cut
+
+
+
+commit c048d59e57d8575a774f4bcecf6ceeb5b3ddbff9
+Author: jc953 <jc953@cornell.edu>
+Date:   Tue Mar 18 05:52:08 2014 -0400
+
+    formatting//both using jc953 account
+
+
+
+commit 7fe395aa2a5ac894fc91d89304cc51c271bea3a1
+Author: jc953 <jc953@cornell.edu>
+Date:   Tue Mar 18 05:35:24 2014 -0400
+
+    parsing complete//both using jc953 account
+
+
+
+commit c865c69a1cf51fb391c5cfc574eb03d5d21315e7
+Author: jc953 <jc953@cornell.edu>
+Date:   Tue Mar 18 04:36:37 2014 -0400
+
+    Updates to Parsing
+
+//both using jc953 account
+
+commit 9aea0fd20a525e680c23920bcd6e6408a4607fe9
+Author: jc953 <jc953@cornell.edu>
+Date:   Tue Mar 18 03:42:32 2014 -0400
+
+    fixing AST//both using jc953 account
+
+
+
+commit 3c1992b944661d82b2e448038b1afcd28103c5c2
+Author: jc953 <jc953@cornell.edu>
+Date:   Tue Mar 18 01:41:18 2014 -0400
+
+    AST progress
+
+//both using jc953 account
+
+commit 11a0a7f3d4c05d644e921f2dc1ec61ea5352e8f8
+Author: jc953 <jc953@cornell.edu>
+Date:   Mon Mar 17 23:49:30 2014 -0400
+
+    first draft//both using jc953 account
+
+
+
+commit 3ae14e4b8d697be6591e14509356bf6f26ce8f4d
+Author: jc953 <jc953@cornell.edu>
+Date:   Mon Mar 17 22:35:07 2014 -0400
+
+    parser edits
+
+//both using jc953 account
+
+commit 85002b609ca2efc634f0c35010e59b83bca5115f
+Author: iaj8 <iaj8@cornell.edu>
+Date:   Mon Mar 17 22:34:12 2014 -0400
+
+    updated AbstractNode
+
+//both using jc953 account
+
+commit a4d7809f290428f257b7a379d900d80088139197
+Author: iaj8 <iaj8@cornell.edu>
+Date:   Mon Mar 17 22:24:40 2014 -0400
+
+    Added txtfile and AbstractNode class
+
+commit 778cbef3f79884775197c47ebf9c6f0cb1b0743e
+Author: jc953 <jc953@cornell.edu>
+Date:   Mon Mar 17 02:37:44 2014 -0400
+
+    updated Token
+
+commit 843e3d98e4676688deae9f5432a16837c5f95eb2
+Author: iaj8 <iaj8@cornell.edu>
+Date:   Fri Mar 14 21:46:22 2014 -0400
+
+    test
+
+commit b46ae4a904a105f449b247362277a10bb1c94e4c
+Author: iaj8 <iaj8@cornell.edu>
+Date:   Fri Mar 14 21:42:21 2014 -0400
+
+    overview draft
+
+commit 2335f9dc61f6150ab9dca68130cad0e9dbcf00c6
+Author: jc953 <jc953@cornell.edu>
+Date:   Thu Mar 13 15:58:04 2014 -0400
+
+    added JRE
+
+commit f5037ef872c5d8b1f93fe96a34de6c877c48b9e3
+Author: jc953 <jc953@cornell.edu>
+Date:   Thu Mar 13 15:53:56 2014 -0400
+
+    java project
+
+commit 2c3b3603290dd1b7023509c7dd06a03c723f786f
+Author: jc953 <jc953@cornell.edu>
+Date:   Thu Mar 13 00:21:13 2014 -0400
+
+    testing
+
+commit 20a7a8a71ab71020d706b1e7c4c9387a3e9ec4ba
+Author: jc953 <jc953@cornell.edu>
+Date:   Thu Mar 13 00:15:03 2014 -0400
+
+    source files
+
+
+
+commit c5ff208b596107cc52f7e3592777362c0661406d
+Author: jc953 <jc953@cornell.edu>
+Date:   Wed Mar 12 21:08:20 2014 -0700
+
+    Initial commit
+//both using jc953 account

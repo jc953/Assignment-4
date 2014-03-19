@@ -1,41 +1,72 @@
 package a4;
 
 import java.util.ArrayList;
-
+/**
+ * Class to handle the commands in the language, relating them to the appropriate
+ * nodes in the Abstract Syntax Tree
+ * @authors Ishaan and Jonathan
+ *
+ */
 public class Command implements Node {
 	Rule rule;
 	ArrayList<Update> updates;
 	Expression action;
 
+	/**
+	 * Constructor
+	 */
 	public Command() {
 		updates = new ArrayList<Update>();
 		action = null;
 	}
 
+	/**
+	 * method to add Update Nodes to the Command Node
+	 * @param u the update node to add
+	 */
 	public void addUpdate(Update u) {
 		updates.add(u);
 		u.addCommand(this);
 	}
 
+	/**
+	 * removes Update Nodes from this Command Node
+	 * @param u the update node to remove
+	 */
 	public void removeUpdate(Update u){
 		updates.remove(u);
 	}
 	
+	/**
+	 * method to add an action Nodes to the Command Node
+	 * @param e the action node to add
+	 */
 	public void addAction(Expression e) {
 		action = e;
 		action.setParent(this);
 	}
 	
+	
+	/**
+	 * method to remove an action Nodes from this Command Node
+	 * @param e the action node to remove
+	 */	
 	public void removeAction(){
 		if (action != null){
 			action = null;
 		}
 	}
-	
+	/**
+	 * 
+	 * @return the Update Nodes in this Command Node
+	 */
 	public ArrayList<Update> getUpdates(){
 		return updates;
 	}
 	
+	/**
+	 * @return the Action node in this Command Node, if any
+	 */
 	public Expression getAction(){
 		return action;
 	}

@@ -22,22 +22,45 @@ public class BinaryCondition extends Condition {
 		this.right = right;
 	}
 	
+	
+	/**
+	 * @return the right side of the BinaryCondition
+	 */
 	public Condition getRight(){
 		return right;
 	}
 	
+	
+	/**
+	 * @return the left side of the BinaryCondition
+	 */
 	public Condition getLeft(){
 		return left;
 	}
 	
+	/**
+	 * sets the right side of the BinaryCondition to c
+	 * @param c 
+	 */
 	public void setRight(Condition c){
 		right = c;
+		c.setParent(this);
 	}
 	
+	/**
+	 * sets the left side of the BinaryCondition to c
+	 * @param c 
+	 */
 	public void setLeft(Condition c){
 		left = c;
+		c.setParent(this);
 	}
 
+	
+	/**
+	 * get the head of this BinaryCondition 
+	 * @return a rule or a condition 
+	 */
 	public Object getHead(){
 		if (rhead != null){
 			return rhead;
@@ -45,6 +68,11 @@ public class BinaryCondition extends Condition {
 		return head;
 	}
 	
+	
+	/**
+	 * set the head of this BinaryCondition 
+	 * @param o the head 
+	 */
 	public void setHead(Object o){
 		if (o instanceof Rule){
 			rhead = (Rule) o;
@@ -55,12 +83,21 @@ public class BinaryCondition extends Condition {
 		}
 	}
 	
+	
+	/**
+	 * removes the left condition of this BinaryCondition
+	 * @param c
+	 */
 	public void remove(Condition c){
 		if (left.equals(c)){
 			left = null;
 		}
 	}
 	
+	/**
+	 * returns all the expressions that arise from this BinaryCondition node
+	 * @return the list of expressions
+	 */
 	public ArrayList<Expression> getExpressions(){
 		ArrayList<Expression> result = new ArrayList<Expression>();
 		ArrayList<Expression> temp1 = left.getExpressions();
@@ -74,6 +111,10 @@ public class BinaryCondition extends Condition {
 		return result;
 	}
 	
+	/**
+	 * returns all the BinaryConditions that arise from this BinaryCondition node
+	 * @return the list of BinaryConditions
+	 */
 	public ArrayList<BinaryCondition> getBinaryConditions(){
 		ArrayList<BinaryCondition> result = new ArrayList<BinaryCondition>();
 		if (left instanceof BinaryCondition){
@@ -95,6 +136,10 @@ public class BinaryCondition extends Condition {
 		return result;
 	}
 	
+	/**
+	 * returns all the conditions that arise from this BinaryCondition node
+	 * @return the list of conditions
+	*/
 	public ArrayList<Condition> getConditions(){
 		ArrayList<Condition> result = new ArrayList<Condition>();
 		if (left instanceof RelationCondition){
@@ -120,6 +165,9 @@ public class BinaryCondition extends Condition {
 		return result;
 	}
 	
+	/**
+	 * @return a random Token 
+	 */
 	public Token getRandomToken(){
 		int i = (int)(Math.random()*2);
 		return new Token(30+i, 0);
