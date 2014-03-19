@@ -1,6 +1,7 @@
 package a4;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class ExtendedExpression extends Expression {
 	Expression e;
@@ -9,6 +10,22 @@ public class ExtendedExpression extends Expression {
 		super(tok);
 		this.e = e;
 		this.e.setParent(this);
+	}
+	
+	public void setExpression(Expression e){
+		this.e = e;
+	}
+	
+	protected Token getRandomToken(){
+		if (tok.isSensor()){
+			int i = (int)(Math.random()*3);
+			return new Token(80+i, 0);
+		} else if (tok.isAction()){
+			int i = (int)(Math.random()*2);
+			return new Token(19+i, 0);
+		} else {
+			return new Token(0, 0);
+		}
 	}
 	
 	public ArrayList<Expression> getExpressions(){
@@ -29,25 +46,4 @@ public class ExtendedExpression extends Expression {
 		sb.append(" ]");
 		if(sb.charAt(0)==' ') sb = sb.deleteCharAt(0);
 	}
-	
-	public Node mutate1(){
-		return null;
-	}
-	
-	public Node mutate2(){
-		return null;
-	}
-	
-	public Node mutate3(){
-		return null;
-	}
-	
-	public Node mutate4(){
-		return null;
-	}
-	
-	public Node mutate5(){
-		return null;
-	}
-	
 }

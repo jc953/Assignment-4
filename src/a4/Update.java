@@ -35,10 +35,12 @@ public class Update implements Node {
 	
 	public void setExpression1(Expression e1){
 		this.e1 = e1;
+		this.e1.setParent(this);
 	}
 	
 	public void setExpression2(Expression e2){
 		this.e2 = e2;
+		this.e2.setParent(this);
 	}
 
 	@Override

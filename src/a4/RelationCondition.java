@@ -13,6 +13,23 @@ public class RelationCondition extends Condition {
 		this.right.setParent(this);
 	}
 	
+	public Expression getRight(){
+		return right;
+	}
+	
+	public Expression getLeft(){
+		return left;
+	}
+	
+	public void setRight(Expression e){
+		right = e;
+		e.setParent(this);
+	}
+	
+	public void setLeft(Expression e){
+		e.setParent(this);
+	}
+	
 	public Object getHead(){
 		if (rhead != null){
 			return rhead;

@@ -45,12 +45,8 @@ public class Expression implements Node {
 			return mutate2();
 		} else if (head instanceof RelationCondition){
 			return mutate3();
-		} else if (head instanceof ExtendedExpression){
-			return mutate4();
-		} else if (head instanceof BinaryOp){
-			return mutate5();
 		} else {
-			return null;
+			return mutate4();
 		}
 	}
 	
@@ -99,15 +95,45 @@ public class Expression implements Node {
 	}
 	
 	public Node mutate3(){
-		return null;
+		double r = Math.random();
+		RelationCondition rc = (RelationCondition) head;
+		if (r < 1.0/6.0){
+			return getProgram();
+		} else if (r < 1.0/3.0){
+			return getProgram();
+		} else if (r < 0.5){
+			Expression temp = getProgram().getRandomExpression();
+			if (rc.getLeft().equals(this)){
+				rc.setLeft(temp);
+			} else {
+				rc.setRight(temp);
+			}
+			return getProgram();
+		} else if (r < 2.0 / 3.0){
+			tok = getRandomToken();
+			return getProgram();
+		} else {
+			return getProgram();
+		}
 	}
 	
 	public Node mutate4(){
-		return null;
-	}
-	
-	public Node mutate5(){
-		return null;
+		double r = Math.random();
+		ExtendedExpression ee = (ExtendedExpression) head;
+		if (r < 1.0/6.0){
+			return getProgram();
+		} else if (r < 1.0/3.0){
+			return getProgram();
+		} else if (r < 0.5){
+			Expression temp = getProgram().getRandomExpression();
+			ee.setExpression(temp);
+			return getProgram();
+		} else if (r < 2.0 / 3.0){
+			tok = getRandomToken();
+			return getProgram();
+		} else {
+			return getProgram();
+		}
 	}
 	
 	public void setParent(Object o){

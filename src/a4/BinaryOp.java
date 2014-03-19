@@ -28,6 +28,14 @@ public class BinaryOp extends Expression { // need not be abstract
 		return result;
 	}
 	
+	public Token getRandomToken(){
+		int i = (int)(Math.random()*5);
+		if (i < 2){
+			return new Token(50 + i, 0);
+		} else{
+			return new Token(58 + i, 0);
+		}
+	}
 	public void prettyPrint(StringBuffer sb) {
 		if(paren){
 			sb.append(" (");
@@ -42,23 +50,118 @@ public class BinaryOp extends Expression { // need not be abstract
 	}
 	
 	public Node mutate1(){
-		return null;
+		double r = Math.random();
+		Update u = (Update) head;
+		if (r < 1.0/6.0){
+			Expression e;
+			if (Math.random() < 0.5){
+				e = left;
+			} else{
+				e = right;
+			}
+			if (u.getExpression1().equals(this)){
+				u.setExpression1(e);
+			} else {
+				u.setExpression2(e);
+			}
+			return getProgram();
+		} else if (r < 1.0/3.0){
+			Expression temp = left;
+			left = right;
+			right = temp;
+			return getProgram();
+		} else if (r < 0.5){
+			Expression temp = getProgram().getRandomExpression();
+			if (u.getExpression1().equals(this)){
+				u.setExpression1(temp);
+			} else {
+				u.setExpression2(temp);
+			}
+			return getProgram();
+		} else if (r < 2.0 / 3.0){
+			tok = getRandomToken();
+			return getProgram();
+		} else {
+			return getProgram();
+		}
 	}
 	
 	public Node mutate2(){
-		return null;
+		double r = Math.random();
+		Command c = (Command) head;
+		if (r < 1.0/6.0){
+			Expression e;
+			if (Math.random() < 0.5){
+				e = left;
+			} else{
+				e = right;
+			}
+			c.addAction(e);
+			return getProgram();
+		} else if (r < 1.0/3.0){
+			Expression temp = left;
+			left = right;
+			right = temp;
+			return getProgram();
+		} else if (r < 0.5){
+			Expression temp = getProgram().getRandomExpression();
+			c.addAction(temp);
+			return getProgram();
+		} else if (r < 2.0 / 3.0){
+			tok = getRandomToken();
+			return getProgram();
+		} else {
+			return getProgram();
+		}
 	}
 	
 	public Node mutate3(){
-		return null;
+		double r = Math.random();
+		RelationCondition rc = (RelationCondition) head;
+		if (r < 1.0/6.0){
+			return getProgram();
+		} else if (r < 1.0/3.0){
+			Expression temp = left;
+			left = right;
+			right = temp;
+			return getProgram();
+		} else if (r < 0.5){
+			Expression temp = getProgram().getRandomExpression();
+			if (rc.getLeft().equals(this)){
+				rc.setLeft(temp);
+			} else {
+				rc.setRight(temp);
+			}
+			return getProgram();
+		} else if (r < 2.0 / 3.0){
+			tok = getRandomToken();
+			return getProgram();
+		} else {
+			return getProgram();
+		}
 	}
 	
 	public Node mutate4(){
-		return null;
+		double r = Math.random();
+		ExtendedExpression ee = (ExtendedExpression) head;
+		if (r < 1.0/6.0){
+			return getProgram();
+		} else if (r < 1.0/3.0){
+			Expression temp = left;
+			left = right;
+			right = temp;
+			return getProgram();
+		} else if (r < 0.5){
+			Expression temp = getProgram().getRandomExpression();
+			ee.setExpression(temp);
+			return getProgram();
+		} else if (r < 2.0 / 3.0){
+			tok = getRandomToken();
+			return getProgram();
+		} else {
+			return getProgram();
+		}
 	}
 	
-	public Node mutate5(){
-		return null;
 	
-	}
 }
