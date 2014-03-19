@@ -1,5 +1,7 @@
 package a4;
 
+import java.util.ArrayList;
+
 /**
  * A representation of a critter rule.
  */
@@ -54,6 +56,20 @@ public class Rule implements Node {
 	
 	protected Program getProgram(){
 		return program;
+	}
+	
+	protected ArrayList<Node> getNodes(){
+		ArrayList<Node> result = new ArrayList<Node>();
+		result.add(this);
+		ArrayList<Node> temp1 = condition.getNodes();
+		ArrayList<Node> temp2 = command.getNodes();
+ 		for (Node n : temp1){
+			result.add(n);
+		}
+ 		for (Node n : temp2){
+ 			result.add(n);
+ 		}
+		return result;
 	}
 	
 	@Override

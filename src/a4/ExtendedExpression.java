@@ -38,6 +38,16 @@ public class ExtendedExpression extends Expression {
 		return result;
 	}
 	
+	public ArrayList<Node> getNodes(){
+		ArrayList<Node> result = new ArrayList<Node>();
+		result.add(this);
+		ArrayList<Node> temp1 = e.getNodes();
+ 		for (Node n : temp1){
+			result.add(n);
+		}
+		return result;
+	}
+	
 	@Override
 	public void prettyPrint(StringBuffer sb) {
 		super.prettyPrint(sb);

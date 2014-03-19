@@ -62,4 +62,8 @@ public abstract class Condition implements Node {
 	public ArrayList<Expression> getExpressions(){
 		return null;
 	}
+	
+	public ArrayList<Node> getNodes(){
+		return null;
+	}
 }

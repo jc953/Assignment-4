@@ -1,5 +1,7 @@
 package a4;
 
+import java.util.ArrayList;
+
 public class Update implements Node {
 	Command command;
 	Token tok;
@@ -63,6 +65,20 @@ public class Update implements Node {
 		} else {
 			return getProgram();
 		}
+	}
+	
+	public ArrayList<Node> getNodes(){
+		ArrayList<Node> result = new ArrayList<Node>();
+		result.add(this);
+		ArrayList<Node> temp1 = e1.getNodes();
+		ArrayList<Node> temp2 = e2.getNodes();
+ 		for (Node n : temp1){
+			result.add(n);
+		}
+ 		for (Node n : temp2){
+ 			result.add(n);
+ 		}
+		return result;
 	}
 
 	@Override

@@ -109,7 +109,18 @@ public class Program implements Node {
 			r.prettyPrint(sb);
 			sb.append(" ;");
 		}
-
+	}
+	
+	public Node getRandomNode(){
+		ArrayList<Node> nodes = new ArrayList<Node>();
+		nodes.add(this);
+		for (Rule r : rules){
+			ArrayList<Node> temp = r.getNodes();
+			for (Node n : temp){
+				nodes.add(n);
+			}
+		}
+		return nodes.get((int) (Math.random()*nodes.size()));
 	}
 
 }

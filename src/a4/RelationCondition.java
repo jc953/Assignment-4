@@ -151,6 +151,20 @@ public class RelationCondition extends Condition {
 			return getProgram();
 		}
 	}
+	
+	public ArrayList<Node> getNodes(){
+		ArrayList<Node> result = new ArrayList<Node>();
+		result.add(this);
+		ArrayList<Node> temp1 = left.getNodes();
+		ArrayList<Node> temp2 = right.getNodes();
+ 		for (Node n : temp1){
+			result.add(n);
+		}
+ 		for (Node n : temp2){
+ 			result.add(n);
+ 		}
+		return result;
+	}
 
 	@Override
 	public void prettyPrint(StringBuffer sb) {
@@ -164,7 +178,6 @@ public class RelationCondition extends Condition {
 			sb.append(" }");
 		}
 		if(sb.charAt(0)==' ') sb = sb.deleteCharAt(0);
-
 	}
 
 }
