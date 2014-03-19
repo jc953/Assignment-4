@@ -134,8 +134,8 @@ public class Command implements Node {
 			return getProgram();
 		} else if (r < 1.0/3.0){
 			int len = updates.size();
-			int index1 = (int) (Math.random()*len);
-			int index2 = (int) (Math.random()*len);
+			int index1 = (int) (Math.random()*(len-1));
+			int index2 = (int) (Math.random()*(len-1));
 			Update temp = updates.get(index1);
 			updates.set(index1, updates.get(index2));
 			updates.set(index2, temp);
@@ -151,7 +151,7 @@ public class Command implements Node {
 			return getProgram();
 		} else {
 			int len = updates.size();
-			int index = (int) (Math.random()*len);
+			int index = (int) (Math.random()*(len-1));
 			updates.add(updates.get(index));
 			return getProgram();
 		}

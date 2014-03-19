@@ -1,12 +1,21 @@
 package a4;
 
 import java.util.ArrayList;
-
+/**
+ * Class to Handle Update Nodes in the AST of the Critter Language
+ * @author Ishaan and Jonathan
+ *
+ */
 public class Update implements Node {
 	Command command;
 	Token tok;
 	Expression e1, e2;
 
+	/**
+	 * Constructor
+	 * @param e1
+	 * @param e2
+	 */
 	public Update(Expression e1, Expression e2) {
 		this.e1 = e1;
 		this.e1.setParent(this);
@@ -15,31 +24,55 @@ public class Update implements Node {
 		tok = new Token(0, 0);
 	}
 	
+	/**
+	 * 
+	 * @return the program that is a parent to this Update
+	 */
 	public Program getProgram(){
 		return command.getProgram();
 	}
 	
+	/**
+	 * adds a command node c to the update
+	 * @param c
+	 */
 	public void addCommand(Command c){
 		command = c;
 	}
 	
+	/**
+	 * 
+	 * @return the command Node
+	 */
 	public Command getCommand(){
 		return command;
 	}
-	
+	/**
+	 * 
+	 * @return the first expression associated with this update
+	 */
 	public Expression getExpression1(){
 		return e1;
 	}
-	
+	/**
+	 * 
+	 * @return the second expression associated with this update
+	 */
 	public Expression getExpression2(){
 		return e2;
 	}
-	
+	/**
+	 * sets the first expression to c
+	 * @param e1
+	 */
 	public void setExpression1(Expression e1){
 		this.e1 = e1;
 		this.e1.setParent(this);
 	}
-	
+	/**
+	 * sets the second expression to c
+	 * @param e2
+	 */
 	public void setExpression2(Expression e2){
 		this.e2 = e2;
 		this.e2.setParent(this);
@@ -66,7 +99,10 @@ public class Update implements Node {
 			return getProgram();
 		}
 	}
-	
+	/**
+	 * 
+	 * @return the nodes stemming from this update node
+	 */
 	public ArrayList<Node> getNodes(){
 		ArrayList<Node> result = new ArrayList<Node>();
 		result.add(this);

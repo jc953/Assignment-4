@@ -64,7 +64,7 @@ public class Program implements Node {
 				conditions.add(c);
 			}
 		}
-		return conditions.get((int) (Math.random()*conditions.size()));
+		return conditions.get((int) (Math.random()*(conditions.size()-1)));
 	}
 	
 	
@@ -79,7 +79,7 @@ public class Program implements Node {
 				conditions.add(c);
 			}
 		}
-		return conditions.get((int) (Math.random()*conditions.size()));
+		return conditions.get((int) (Math.random()*(conditions.size()-1)));
 	}
 	
 	
@@ -90,7 +90,7 @@ public class Program implements Node {
 		int i = (int)(Math.random()*rules.size());
 		Command temp = rules.get(i).getCommand();
 		ArrayList<Update> temp2 = temp.getUpdates();
-		return temp2.get((int)(Math.random()*temp2.size()));
+		return temp2.get((int)(Math.random()*(temp2.size()-1)));
 	}
 	
 	
@@ -109,7 +109,7 @@ public class Program implements Node {
 				expressions.add(e);
 			}
 		}
-		return expressions.get((int) (Math.random()*expressions.size()));
+		return expressions.get((int) (Math.random()*(expressions.size()-1)));
 	}
 	
 	@Override
@@ -124,8 +124,8 @@ public class Program implements Node {
 			return new Program();
 		} else if (r < 1.0/3.0){
 			int len = rules.size();
-			int index1 = (int) (Math.random()*len);
-			int index2 = (int) (Math.random()*len);
+			int index1 = (int) (Math.random()*(len-1));
+			int index2 = (int) (Math.random()*(len-1));
 			Rule temp = rules.get(index1);
 			rules.set(index1, rules.get(index2));
 			rules.set(index2, temp);
@@ -134,7 +134,7 @@ public class Program implements Node {
 			return this;//This is counting for mutation 3 and 4 as well
 		} else {
 			int len = rules.size();
-			int index = (int) (Math.random()*len);
+			int index = (int) (Math.random()*(len-1));
 			rules.add(rules.get(index));
 			return this;
 		}
@@ -161,7 +161,7 @@ public class Program implements Node {
 				nodes.add(n);
 			}
 		}
-		return nodes.get((int) (Math.random()*nodes.size()));
+		return nodes.get((int) (Math.random()*(nodes.size()-1)));
 	}
 
 }

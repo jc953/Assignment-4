@@ -28,7 +28,7 @@ public class Rule implements Node {
 			program.removeRule(this);
 			return program;
 		} else if (r < 1.0/3.0){
-			int i = (int) (Math.random()*program.numRules());
+			int i = (int) (Math.random()*(program.numRules()-1));
 			Rule temp = program.getRule(i);
 			this.condition = temp.getCondition();
 			this.command = temp.getCommand();
