@@ -50,6 +50,7 @@ public class ParserImpl implements Parser {
 			return temp;
 		}
 		tok = tokenizer.next();
+		//System.out.println(tok.toString());
 		return new BinaryCondition(temp, tok, parseCondition());
 	}
 
@@ -63,7 +64,6 @@ public class ParserImpl implements Parser {
 		}
 		Expression e = parseExpression();
 		tok = tokenizer.next();
-		//at this point tok = -->
 		return new RelationCondition(e, tok,
 				parseExpression());
 	}
@@ -112,16 +112,15 @@ public class ParserImpl implements Parser {
 			e.setParen(true);
 			tokenizer.next();
 			return e;
-		} else if(tokenizer.peek().isAction()){
-			return new Expression(tokenizer.next());
-		}
-		else {
-			Token tok1 = tok;
+		} else if(tokenizer.peek().isAction() || tokenizer.peek().isSensor() || tokenizer.peek().getType() == Token.MEM){
+			Expression e1 = new Expression(tokenizer.next());
+			if (!tokenizer.hasNext()) return e1;
 			tokenizer.next();
 			Expression e = parseExpression();
 			tokenizer.next();
-			return new ExtendedExpression(tok1, e);
+			return new ExtendedExpression(e1.tok, e);
 		}
+		return null;
 	}
 	
 	

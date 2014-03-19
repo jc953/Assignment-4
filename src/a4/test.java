@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 public class test {
 	public static void main(String[] args) {
 		ParserImpl p = new ParserImpl(); 
-		Reader r = new StringReader("3 * 3 > 8 + 9 --> nearby [9]"); 
+		Reader r = new StringReader("3 + 3 * 5 OR 3 < 4 OR 34 > 7 --> forward"); 
 		StringBuffer sb = new StringBuffer();
 		try{
 			p.parse(r).prettyPrint(sb);

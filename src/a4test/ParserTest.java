@@ -41,5 +41,15 @@ public class ParserTest {
 		sb = new StringBuffer();
 		p.parse(r).prettyPrint(sb);
 		assertTrue(p.parse(r).toString()=="3 + 3 * 5 AND 3<4 OR 34 > 7 --> mem[6] := 12 + 7 forward");
+		
+		r = new StringReader("3 < 4 --> forward ; 3 < 4 --> backward");
+		sb = new StringBuffer();
+		p.parse(r).prettyPrint(sb);
+		assertTrue(p.parse(r).toString()=="3 < 4 --> forward ; 3 < 4 --> backward");
+		
+		r = new StringReader("{3<4} < 5 --> bud");
+		sb = new StringBuffer();
+		p.parse(r).prettyPrint(sb);
+		assertTrue(p.parse(r).toString()=="{3<4} < 5 --> bud");
 	}
 }
