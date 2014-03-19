@@ -1,12 +1,30 @@
 package a4;
 
 public class Update implements Node {
-	ExtendedExpression ee;
-	Expression e;
+	Command command;
+	Token tok;
+	Expression e1, e2;
 
-	public Update(ExtendedExpression ee, Expression e) {
-		this.ee = ee;
-		this.e = e;
+	public Update(Expression e1, Expression e2) {
+		this.e1 = e2;
+		this.e1 = e2;
+		tok = new Token(0, 0);
+	}
+	
+	public Program getProgram(){
+		return command.getProgram();
+	}
+	
+	public void addCommand(Command c){
+		command = c;
+	}
+	
+	public Expression getExpression1(){
+		return e1;
+	}
+	
+	public Expression getExpression2(){
+		return e2;
 	}
 
 	@Override
@@ -17,15 +35,25 @@ public class Update implements Node {
 
 	@Override
 	public Node mutate() {
-		// TODO Auto-generated method stub
-		return null;
+		double r = Math.random();
+		if (r < 1.0/6.0){
+			command.removeUpdate(this);
+			return getProgram();
+		} else if (r < 1.0/3.0){
+			Update temp = getProgram().getRandomUpdate();
+			this.e1 = temp.getExpression1();
+			this.e2 = temp.getExpression2();
+			return getProgram();
+		} else {
+			return getProgram();
+		}
 	}
 
 	@Override
 	public void prettyPrint(StringBuffer sb) {
-		ee.prettyPrint(sb);
+		e1.prettyPrint(sb);
 		System.out.print(" :=");
-		e.prettyPrint(sb);
+		e2.prettyPrint(sb);
 	}
 
 }
