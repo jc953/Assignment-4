@@ -116,7 +116,7 @@ public class ParserImpl implements Parser {
 			return new Expression(tokenizer.next());
 		}
 		else {
-			Token tok1 = tokenizer.next();
+			Token tok1 = tok;
 			tokenizer.next();
 			Expression e = parseExpression();
 			tokenizer.next();
