@@ -21,4 +21,8 @@ public class BinaryOp extends Expression { // need not be abstract
 			System.out.print(" )");
 		}
 	}
+	
+	public Node mutate(){
+		
+	}
 }
