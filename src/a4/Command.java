@@ -102,6 +102,9 @@ public class Command implements Node {
 		return result;
 	}
 	
+	/**
+	 * @return a list of Node including and beneath this node.
+	 */
 	public ArrayList<Node> getNodes(){
 		ArrayList<Node> result = new ArrayList<Node>();
 		result.add(this);

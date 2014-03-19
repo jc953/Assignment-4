@@ -11,11 +11,20 @@ public class ErrorToken extends Token {
 
 	protected String value;
 
+	/**
+	 * Constructs an ErrorToken
+	 * 
+	 * @param value the value of the string
+	 * @param lineNo the line number
+	 */
 	public ErrorToken(String value, int lineNo) {
 		super(ERROR, lineNo);
 		this.value = value;
 	}
 
+	/**
+	 * @return value of the string
+	 */
 	public String getValue() {
 		return value;
 	}

@@ -41,6 +41,9 @@ public class BinaryOp extends Expression { // need not be abstract
 		return result;
 	}
 	
+	/**
+	 * @return a list of Node including and beneath this node.
+	 */
 	public ArrayList<Node> getNodes(){
 		ArrayList<Node> result = new ArrayList<Node>();
 		result.add(this);
@@ -187,7 +190,6 @@ public class BinaryOp extends Expression { // need not be abstract
 		}
 	}
 	
-	
 	/**
 	 * helper method for mutate
 	 * @return the mutated node
@@ -213,6 +215,4 @@ public class BinaryOp extends Expression { // need not be abstract
 			return getProgram();
 		}
 	}
-	
-	
 }
