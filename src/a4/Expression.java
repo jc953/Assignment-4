@@ -79,7 +79,23 @@ public class Expression implements Node {
 	}
 	
 	public Node mutate2(){
-		return null;
+		double r = Math.random();
+		Command c = (Command) head;
+		if (r < 1.0/6.0){
+			c.removeAction();
+			return getProgram();
+		} else if (r < 1.0/3.0){
+			return getProgram();
+		} else if (r < 0.5){
+			Expression temp = getProgram().getRandomExpression();
+			c.addAction(temp);
+			return getProgram();
+		} else if (r < 2.0 / 3.0){
+			tok = getRandomToken();
+			return getProgram();
+		} else {
+			return getProgram();
+		}
 	}
 	
 	public Node mutate3(){

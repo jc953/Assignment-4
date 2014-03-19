@@ -26,6 +26,12 @@ public class Command implements Node {
 		action.setParent(this);
 	}
 	
+	public void removeAction(){
+		if (action != null){
+			action = null;
+		}
+	}
+	
 	public ArrayList<Update> getUpdates(){
 		return updates;
 	}
