@@ -59,7 +59,7 @@ public class Rule implements Node {
 	@Override
 	public void prettyPrint(StringBuffer sb) {
 		condition.prettyPrint(sb);
-		System.out.print(" -->");
+		sb.append(" -->");
 		command.prettyPrint(sb);
 	}
 

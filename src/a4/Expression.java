@@ -26,11 +26,12 @@ public class Expression implements Node {
 	@Override
 	public void prettyPrint(StringBuffer sb) {
 		if (paren){
-			System.out.print(" ( " + tok.toString() + " )");
+			sb.append(" ( " + tok.toString() + " )");
 		}
 		else{
-			System.out.print(" " + tok.toString());
+			sb.append(" " + tok.toString());
 		}
+		if(sb.charAt(0)==' ') sb = sb.deleteCharAt(0);
 
 	}
 	

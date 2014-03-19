@@ -11,8 +11,11 @@ public class ExtendedExpression extends Expression {
 	@Override
 	public void prettyPrint(StringBuffer sb) {
 		super.prettyPrint(sb);
-		System.out.print(" [");
+		sb.append(" [");
 		e.prettyPrint(sb);
-		System.out.print(" ]");
+		sb.append(" ]");
+		if(sb.charAt(0)==' ') sb = sb.deleteCharAt(0);
+
 	}
+	
 }

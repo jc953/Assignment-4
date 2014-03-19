@@ -121,14 +121,16 @@ public class RelationCondition extends Condition {
 	@Override
 	public void prettyPrint(StringBuffer sb) {
 		if(brace){
-			System.out.print(" {");
+			sb.append(" {");
 		}
 		left.prettyPrint(sb);
-		System.out.print(" " + tok.toString());
+		sb.append(" " + tok.toString());
 		right.prettyPrint(sb);
 		if(brace){
-			System.out.print(" }");
+			sb.append(" }");
 		}
+		if(sb.charAt(0)==' ') sb = sb.deleteCharAt(0);
+
 	}
 
 }
