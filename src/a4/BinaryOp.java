@@ -22,4 +22,8 @@ public class BinaryOp extends Expression { // need not be abstract
 		}
 		if(sb.charAt(0)==' ') sb = sb.deleteCharAt(0);
 	}
+	
+	public Node mutate(){
+		
+	}
 }

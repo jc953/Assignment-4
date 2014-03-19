@@ -84,9 +84,13 @@ public class ParserImpl implements Parser {
 	}
 
 	public Update parseUpdate() throws SyntaxError {
-		ExtendedExpression f = (ExtendedExpression) parseFactor();
 		tokenizer.next();
-		return new Update(f, parseExpression());
+		tokenizer.next();
+		Expression e1 = parseExpression();
+		tokenizer.next();
+		tokenizer.next();
+		Expression e2 = parseExpression();
+		return new Update(e1, e2);
 	}
 
 	public Expression parseExpression() throws SyntaxError {
