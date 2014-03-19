@@ -23,6 +23,13 @@ public class Command implements Node {
 	
 	public void addAction(Expression e) {
 		action = e;
+		action.setParent(this);
+	}
+	
+	public void removeAction(){
+		if (action != null){
+			action = null;
+		}
 	}
 	
 	public ArrayList<Update> getUpdates(){
@@ -39,6 +46,16 @@ public class Command implements Node {
 	
 	public Program getProgram(){
 		return rule.getProgram();
+	}
+	
+	public ArrayList<Expression> getExpressions(){
+		ArrayList<Expression> result = new ArrayList<Expression>();
+		if (action != null) result.add(action);
+		for (Update u : updates){
+			result.add(u.getExpression1());
+			result.add(u.getExpression2());
+		}
+		return result;
 	}
 
 	@Override

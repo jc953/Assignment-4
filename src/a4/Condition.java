@@ -58,4 +58,8 @@ public abstract class Condition implements Node {
 	public ArrayList<BinaryCondition> getBinaryConditions(){
 		return null;
 	}
+	
+	public ArrayList<Expression> getExpressions(){
+		return null;
+	}
 }

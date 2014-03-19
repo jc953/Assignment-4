@@ -61,6 +61,19 @@ public class BinaryCondition extends Condition {
 		}
 	}
 	
+	public ArrayList<Expression> getExpressions(){
+		ArrayList<Expression> result = new ArrayList<Expression>();
+		ArrayList<Expression> temp1 = left.getExpressions();
+		ArrayList<Expression> temp2 = right.getExpressions();
+		for (Expression e : temp1){
+			result.add(e);
+		}
+		for (Expression e : temp2){
+			result.add(e);
+		}
+		return result;
+	}
+	
 	public ArrayList<BinaryCondition> getBinaryConditions(){
 		ArrayList<BinaryCondition> result = new ArrayList<BinaryCondition>();
 		if (left instanceof BinaryCondition){

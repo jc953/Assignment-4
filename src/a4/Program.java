@@ -60,6 +60,21 @@ public class Program implements Node {
 		return temp2.get((int)(Math.random()*temp2.size()));
 	}
 	
+	protected Expression getRandomExpression(){
+		ArrayList<Expression> expressions = new ArrayList<Expression>();
+		for (Rule r : rules){
+			ArrayList<Expression> comExpr = r.getCommand().getExpressions();
+			for (Expression e : comExpr){
+				expressions.add(e);
+			}
+			ArrayList<Expression> conExpr = r.getCondition().getExpressions();
+			for (Expression e : conExpr){
+				expressions.add(e);
+			}
+		}
+		return expressions.get((int) (Math.random()*expressions.size()));
+	}
+	
 	@Override
 	public int size() {
 		return rules.size() + 1;

@@ -18,6 +18,10 @@ public class NumToken extends Token {
 	public int getValue() {
 		return value;
 	}
+	
+	public void setValue(int i){
+		value = i;
+	}
 
 	@Override
 	public String toString() {
