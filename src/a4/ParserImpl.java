@@ -34,14 +34,24 @@ public class ParserImpl implements Parser {
 		}
 		return result;
 	}
-
+	
+	/**
+	 * helper method for parseProgram()
+	 * @return a correctly parsed Rule
+	 * @throws SyntaxError
+	 */
 	public Rule parseRule() throws SyntaxError {
 		Rule result = new Rule(parseCondition(), parseCommand());
 		result.getCondition().setParent(result);
 		result.getCommand().setParent(result);
 		return result;
 	}
-
+	
+	/**
+	 * helper method for parseRule()
+	 * @return a correctly parsed Condition
+	 * @throws SyntaxError
+	 */
 	public Condition parseCondition() throws SyntaxError {
 		Condition temp = parseRelation();
 		if (!tokenizer.hasNext()) return temp;
@@ -50,10 +60,14 @@ public class ParserImpl implements Parser {
 			return temp;
 		}
 		tok = tokenizer.next();
-		//System.out.println(tok.toString());
 		return new BinaryCondition(temp, tok, parseCondition());
 	}
-
+	
+	/**
+	 * helper method for parseCondition()
+	 * @return a partially parsed Condition
+	 * @throws SyntaxError
+	 */
 	public Condition parseRelation() throws SyntaxError {
 		if (!tokenizer.hasNext()) return null;
 		if (tokenizer.peek().getType() == Token.LBRACE) {
@@ -68,6 +82,11 @@ public class ParserImpl implements Parser {
 				parseExpression());
 	}
 
+	/**
+	 * helper method for parseRule()
+	 * @return a correctly parsed Command
+	 * @throws SyntaxError
+	 */
 	public Command parseCommand() throws SyntaxError {
 		Command c = new Command();
 		if (!tokenizer.hasNext()){
@@ -82,7 +101,12 @@ public class ParserImpl implements Parser {
 		}
 		return c;
 	}
-
+	
+	/**
+	 * helper method for parseCommand()
+	 * @return a correctly parsed Update
+	 * @throws SyntaxError
+	 */
 	public Update parseUpdate() throws SyntaxError {
 		tokenizer.next();
 		tokenizer.next();
@@ -93,6 +117,12 @@ public class ParserImpl implements Parser {
 		return new Update(e1, e2);
 	}
 
+	
+	/**
+	 * helper method for parsing
+	 * @return a correctly parsed Expression
+	 * @throws SyntaxError
+	 */
 	public Expression parseExpression() throws SyntaxError {
 		Expression e = parseFactor();
 		if (!tokenizer.hasNext()) return e;
@@ -102,6 +132,12 @@ public class ParserImpl implements Parser {
 		return e;
 	}
 
+	
+	/**
+	 * helper method for parseExpression()
+	 * @return a partially parsed Expression
+	 * @throws SyntaxError
+	 */
 	public Expression parseFactor() throws SyntaxError {
 		if (!tokenizer.hasNext()) return null;
 		if (tokenizer.peek().getType() == Token.NUM) {

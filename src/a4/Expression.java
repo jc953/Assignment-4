@@ -9,6 +9,11 @@ public class Expression implements Node {
 	boolean paren;
 	Object head;
 
+	
+	/**
+	 * Constructor
+	 * @param tok
+	 */
 	public Expression(Token tok) {
 		this.tok = tok;
 		paren = false;
@@ -20,12 +25,22 @@ public class Expression implements Node {
 		return 0;
 	}
 	
+	
+	/**
+	 * 
+	 * @return a list of the expresions that extend from this Expression Node
+	 */
 	public ArrayList<Expression> getExpressions(){
 		ArrayList<Expression> result = new ArrayList<Expression>();
 		result.add(this);
 		return result;
 	}
 
+	
+	/**
+	 * 
+	 * @return a random token
+	 */
 	protected Token getRandomToken(){
 		if (tok.getType() == Token.NUM){
 			Random r = new Random();
@@ -50,6 +65,11 @@ public class Expression implements Node {
 		}
 	}
 	
+	
+	/**
+	 * helper method for mutate
+	 * @return the the mutated Node
+	 */
 	public Node mutate1(){
 		double r = Math.random();
 		Update u = (Update) head;
@@ -74,6 +94,11 @@ public class Expression implements Node {
 		}
 	}
 	
+	
+	/**
+	 * helper method for mutate
+	 * @return the the mutated Node
+	 */
 	public Node mutate2(){
 		double r = Math.random();
 		Command c = (Command) head;
@@ -94,6 +119,11 @@ public class Expression implements Node {
 		}
 	}
 	
+	
+	/**
+	 * helper method for mutate
+	 * @return the the mutated Node
+	 */
 	public Node mutate3(){
 		double r = Math.random();
 		RelationCondition rc = (RelationCondition) head;
@@ -117,6 +147,11 @@ public class Expression implements Node {
 		}
 	}
 	
+	
+	/**
+	 * helper method for mutate
+	 * @return the the mutated Node
+	 */
 	public Node mutate4(){
 		double r = Math.random();
 		ExtendedExpression ee = (ExtendedExpression) head;
@@ -136,10 +171,20 @@ public class Expression implements Node {
 		}
 	}
 	
+	
+	/**
+	 * sets the parent node to the value specified
+	 * @return the the mutated Node
+	 */
 	public void setParent(Object o){
 		head = o;
 	}
 
+	
+	/**
+	 * gets the root, Program Node that this Expression stems from
+	 * @return the the mutated Node
+	 */
 	public Program getProgram(){
 		if (head instanceof Update){
 			return ((Update) head).getProgram();
@@ -164,6 +209,11 @@ public class Expression implements Node {
 
 	}
 	
+	
+	/**
+	 * sets whether this Expression has parentheses surrounding it or not
+	 * @param b
+	 */
 	public void setParen(boolean b){
 		paren = b;
 	}

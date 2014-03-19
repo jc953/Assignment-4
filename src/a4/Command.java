@@ -71,14 +71,27 @@ public class Command implements Node {
 		return action;
 	}
 	
+	/**
+	 * sets the parent rule to r
+	 * @param r
+	 */
 	public void setParent(Rule r){
 		rule = r;
 	}
 	
+	/**
+	 * 
+	 * @return the parent Program Node
+	 */
 	public Program getProgram(){
 		return rule.getProgram();
 	}
 	
+	
+	/**
+	 * 
+	 * @return a list of the expressions extending from this Command Node
+	 */
 	public ArrayList<Expression> getExpressions(){
 		ArrayList<Expression> result = new ArrayList<Expression>();
 		if (action != null) result.add(action);

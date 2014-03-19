@@ -2,10 +2,20 @@ package a4;
 
 import java.util.ArrayList;
 
-// Represents +, -, *, /, mod
+/** Represents +, -, *, /, mod
+ * 
+ * @author Ishaan and Jonathan
+ *
+ */
 public class BinaryOp extends Expression { // need not be abstract
 	private Expression left, right;
 
+	/**
+	 * Constructor
+	 * @param left left expression
+	 * @param tok operator
+	 * @param right right expression
+	 */
 	public BinaryOp(Expression left, Token tok, Expression right) {
 		super(tok);
 		this.left = left;
@@ -14,6 +24,9 @@ public class BinaryOp extends Expression { // need not be abstract
 		this.right.setParent(this);
 	}
 	
+	/**
+	 * @return a list of all Expressions extending from this BinaryOp node 
+	 */
 	public ArrayList<Expression> getExpressions(){
 		ArrayList<Expression> result = new ArrayList<Expression>();
 		result.add(this);
@@ -28,6 +41,10 @@ public class BinaryOp extends Expression { // need not be abstract
 		return result;
 	}
 	
+	
+	/**
+	 * @return a random Token 
+	 */
 	public Token getRandomToken(){
 		int i = (int)(Math.random()*5);
 		if (i < 2){
@@ -36,6 +53,8 @@ public class BinaryOp extends Expression { // need not be abstract
 			return new Token(58 + i, 0);
 		}
 	}
+	
+	@Override
 	public void prettyPrint(StringBuffer sb) {
 		if(paren){
 			sb.append(" (");
@@ -49,6 +68,10 @@ public class BinaryOp extends Expression { // need not be abstract
 		if(sb.charAt(0)==' ') sb = sb.deleteCharAt(0);
 	}
 	
+	/**
+	 * helper method for mutate
+	 * @return the mutated node
+	 */
 	public Node mutate1(){
 		double r = Math.random();
 		Update u = (Update) head;
@@ -86,6 +109,11 @@ public class BinaryOp extends Expression { // need not be abstract
 		}
 	}
 	
+	
+	/**
+	 * helper method for mutate
+	 * @return the mutated node
+	 */
 	public Node mutate2(){
 		double r = Math.random();
 		Command c = (Command) head;
@@ -115,6 +143,11 @@ public class BinaryOp extends Expression { // need not be abstract
 		}
 	}
 	
+	
+	/**
+	 * helper method for mutate
+	 * @return the mutated node
+	 */
 	public Node mutate3(){
 		double r = Math.random();
 		RelationCondition rc = (RelationCondition) head;
@@ -141,6 +174,11 @@ public class BinaryOp extends Expression { // need not be abstract
 		}
 	}
 	
+	
+	/**
+	 * helper method for mutate
+	 * @return the mutated node
+	 */
 	public Node mutate4(){
 		double r = Math.random();
 		ExtendedExpression ee = (ExtendedExpression) head;
