@@ -13,7 +13,30 @@ public class ParserTest {
 	public void testA(){
 		ParserImpl p = new ParserImpl(); 
 		Reader r = new StringReader("3");
-		assertTrue(p.parse(r).toString()=="3");
+		StringBuffer sb = new StringBuffer();
+		p.parse(r).prettyPrint(sb);
+		assertTrue(sb.equals("3"));
+		
+		r = new StringReader("3 * 3");
+		sb = new StringBuffer();
+		p.parse(r).prettyPrint(sb);
+		assertTrue(p.parse(r).toString()=="3 * 3");
+		
+		r = new StringReader("3 + 3 * 5");
+		sb = new StringBuffer();
+		p.parse(r).prettyPrint(sb);
+		assertTrue(p.parse(r).toString()=="3 + 3 * 5");
+		
+		r = new StringReader("wait");
+		sb = new StringBuffer();
+		
+		p.parse(r).prettyPrint(sb);
+		assertTrue(p.parse(r).toString()=="3 + 3");
+		
+		r = new StringReader("3 + 3");
+		sb = new StringBuffer();
+		p.parse(r).prettyPrint(sb);
+		assertTrue(p.parse(r).toString()=="3 + 3");
 	}
 	
 	/**

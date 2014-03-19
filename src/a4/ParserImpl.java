@@ -12,7 +12,7 @@ public class ParserImpl implements Parser {
 		try {
 			return parseProgram();
 		} catch (SyntaxError e) {
-			System.out.println("fix this you dumb ho");
+			System.out.println("Error");
 		}
 		return null;
 
@@ -45,10 +45,11 @@ public class ParserImpl implements Parser {
 		Condition temp = parseRelation();
 		if (!tokenizer.hasNext()) return temp;
 		if (tokenizer.peek().getType() == Token.ARR) {
-			tokenizer.next();
+			tok = tokenizer.next();
 			return temp;
 		}
-		return new BinaryCondition(temp, tokenizer.next(), parseCondition());
+		tok = tokenizer.next();
+		return new BinaryCondition(temp, tok, parseCondition());
 	}
 
 	public Condition parseRelation() throws SyntaxError {
@@ -56,16 +57,22 @@ public class ParserImpl implements Parser {
 		if (tokenizer.peek().getType() == Token.LBRACE) {
 			tokenizer.next();
 			Condition result = parseCondition();
-			tokenizer.next();
+			tok = tokenizer.next();
 			return result;
 		}
-		return new RelationCondition(parseExpression(), tokenizer.next(),
+		Expression e = parseExpression();
+		tok = tokenizer.next();
+		//at this point tok = -->
+		return new RelationCondition(e, tok,
 				parseExpression());
 	}
 
 	public Command parseCommand() throws SyntaxError {
 		Command c = new Command();
-		if (!tokenizer.hasNext()) return null;
+		if (!tokenizer.hasNext()){
+			c.addAction(new Expression(tok));
+			return c;
+		}
 		while (tokenizer.peek().getType() == Token.MEM) {
 			c.addUpdate(parseUpdate());
 		}
@@ -104,11 +111,11 @@ public class ParserImpl implements Parser {
 			return new Expression(tokenizer.next());
 		}
 		else {
-			Token tok = tokenizer.next();
+			Token tok1 = tokenizer.next();
 			tokenizer.next();
 			Expression e = parseExpression();
 			tokenizer.next();
-			return new ExtendedExpression(tok, e);
+			return new ExtendedExpression(tok1, e);
 		}
 	}
 	
