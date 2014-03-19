@@ -38,26 +38,49 @@ public class Rule implements Node {
 		}
 	}
 
+	/**
+	 * set the parent Program of this Rule to the parameter
+	 * @param p
+	 */
 	protected void setProgram(Program p){
 		program = p;
 	}
 	
+	/**
+	 * @return the condition associated with this Rule
+	 */
 	protected Condition getCondition(){
 		return condition;
 	}
 	
+	
+	/** set the condition associated with this Rule
+	 * @param c
+	 */	
 	protected void setCondition(Condition c){
 		condition = c;
 	}
 	
+	
+	/**
+	 * @return the command associated with this Rule
+	 */
 	protected Command getCommand(){
 		return command;
 	}
 	
+	
+	/**
+	 * @return the parent command associated with this Rule
+	 */
 	protected Program getProgram(){
 		return program;
 	}
 	
+	
+	/**
+	 * @return a list of the nodes associated with this Rule Node
+	 */
 	protected ArrayList<Node> getNodes(){
 		ArrayList<Node> result = new ArrayList<Node>();
 		result.add(this);
