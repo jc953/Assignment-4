@@ -196,7 +196,8 @@ public class BinaryCondition extends Condition {
 			System.out.print(" {");
 		}
 		left.prettyPrint(sb);
-		System.out.print(" " + tok.toString());
+		String s = tok.type==30? "AND":"OR";
+		System.out.print(" " + s);
 		right.prettyPrint(sb);
 		if(brace){
 			System.out.print(" }");
