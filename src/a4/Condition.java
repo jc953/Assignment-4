@@ -42,8 +42,6 @@ public abstract class Condition implements Node {
 		if (rhead != null){
 			return rhead.getProgram();
 		}
-		System.out.println(head);
-		System.out.println(rhead);
 		return head.getProgram();
 	}
 	

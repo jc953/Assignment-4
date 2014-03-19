@@ -55,6 +55,7 @@ public class RelationCondition extends Condition {
 	 * @param e
 	 */
 	public void setLeft(Expression e){
+		left = e;
 		e.setParent(this);
 	}
 	

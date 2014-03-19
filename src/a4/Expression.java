@@ -160,7 +160,7 @@ public class Expression implements Node {
 	 */
 	public Node mutate4(){
 		double r = Math.random();
-		ExtendedExpression ee = (ExtendedExpression) head;
+		Expression ee = (Expression) head;
 		if (r < 1.0/6.0){
 			return getProgram();
 		} else if (r < 1.0/3.0){
