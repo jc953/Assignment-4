@@ -193,15 +193,16 @@ public class BinaryCondition extends Condition {
 	@Override
 	public void prettyPrint(StringBuffer sb) {
 		if(brace){
-			System.out.print(" {");
+			sb.append(" {");
 		}
 		left.prettyPrint(sb);
 		String s = tok.type==30? "AND":"OR";
-		System.out.print(" " + s);
+		sb.append(" " + s);
 		right.prettyPrint(sb);
 		if(brace){
-			System.out.print(" }");
+			sb.append(" }");
 		}
+		if(sb.charAt(0)==' ') sb = sb.deleteCharAt(0);
 	}
 
 }
